@@ -1,9 +1,22 @@
 header {
-    /* height: 55px; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-search-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1em;
 }
 
 .logo-wrapper img {
     display: block;
     height: auto;
-    width: 95px;
+    width: 198px;
+}
+
+.search-button {
+    all: unset;
+    cursor: pointer;
 }

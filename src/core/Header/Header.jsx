@@ -1,4 +1,7 @@
 import './header.css';
+import Navigation from './Navigation/Navigation';
+
+import Searchbar from './Searchbar/Searchbar';
 
 export default function Header() {
     return (
@@ -10,7 +13,9 @@ export default function Header() {
                         alt="devmeet-logo"
                     />
                 </div>
+                <Searchbar />
             </div>
+            <Navigation />
         </header>
     );
 }
