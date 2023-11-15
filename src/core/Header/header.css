@@ -1,0 +1,9 @@
+header {
+    /* height: 55px; */
+}
+
+.logo-wrapper img {
+    display: block;
+    height: auto;
+    width: 95px;
+}
