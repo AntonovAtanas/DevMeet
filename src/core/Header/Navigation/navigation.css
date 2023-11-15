@@ -1,0 +1,11 @@
+.navigation {
+    display: flex;
+    gap: 1em;
+    list-style: none;
+    font-family: Helvetica, sans-serif;
+}
+
+.navigation li a {
+    text-decoration: none;
+    color: #111111;
+}
