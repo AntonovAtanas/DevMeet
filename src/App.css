@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+}
+
+main {
+    padding: 0 5%;
+}
+
+/* main heading */
+
+.heading-main {
+    font-family: 'Exo 2', sans-serif;
+}
+
+/* main button */
+.button-main {
+    background-color: #28587B;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 0.5em 1em;
+}

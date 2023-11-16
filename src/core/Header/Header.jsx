@@ -8,10 +8,12 @@ export default function Header() {
         <header>
             <div className="logo-search-wrapper">
                 <div className="logo-wrapper">
-                    <img
-                        src="/src/assets/devmeet-temp-logo.jpg"
-                        alt="devmeet-logo"
-                    />
+                    <a href="#">
+                        <img
+                            src="/src/assets/devmeet-temp-logo.jpg"
+                            alt="devmeet-logo"
+                        />
+                    </a>
                 </div>
                 <Searchbar />
             </div>

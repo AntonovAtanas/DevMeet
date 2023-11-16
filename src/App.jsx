@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import './App.css';
 import Header from './core/Header/Header';
+import Home from './features/Home/Home';
 
 function App() {
     const [count, setCount] = useState(0);
-    // todo: add padding: 0 5%; to the main container
     return (
-        <>
+        <div className="container">
             <Header />
-        </>
+            <main>
+                <Home />
+            </main>
+        </div>
     );
 }
 
