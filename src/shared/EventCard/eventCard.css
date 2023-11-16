@@ -1,0 +1,32 @@
+.event-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em;
+    width: 240px;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+span {
+    display: flex;
+    gap: 0.5em;
+}
+
+p {
+    font-size: 14px;
+}
+
+.card-image-wrapper img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.going-price-wrapper {
+    display: flex;
+    gap: 0.5em;
+}
