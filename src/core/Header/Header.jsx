@@ -10,7 +10,7 @@ export default function Header() {
                 <div className="logo-wrapper">
                     <a href="#">
                         <img
-                            src="/src/assets/devmeet-temp-logo.jpg"
+                            src="/src/assets/devMeet-logo.png"
                             alt="devmeet-logo"
                         />
                     </a>
