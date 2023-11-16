@@ -1,44 +1,45 @@
 import './eventCard.css';
 
-export default function EventCard() {
+export default function EventCard({ event }) {
     return (
         <a href="#">
             <div className="event-card">
                 <span className="card-image-wrapper">
-                    <img
-                        src="https://secure.meetupstatic.com/photos/event/1/b/8/5/600_517027045.webp?w=384"
-                        alt=""
-                    />
+                    <img src={event.imageUrl} alt={event.eventTitle} />
                 </span>
-                <h3>How does the QA role fit into an engineering team?</h3>
+                <h3>{event.eventTitle}</h3>
                 <span>
                     <i
-                        class="fa-solid fa-location-dot"
+                        className="fa-solid fa-location-dot"
                         style={{ color: '#cfcfcf' }}
                     ></i>
-                    <p>John Atanasoff Forum, Sofia Tech Park</p>
+                    <p>{event.location}</p>
                 </span>
                 <span>
                     <i
-                        class="fa-regular fa-calendar"
+                        className="fa-regular fa-calendar"
                         style={{ color: '#cfcfcf' }}
                     ></i>
-                    <p>Wednesday, November 22</p>
+                    <p>{event.date}</p>
                 </span>
                 <div className="going-price-wrapper">
                     <span>
                         <i
-                            class="fa-solid fa-check"
+                            className="fa-solid fa-check"
                             style={{ color: '#cfcfcf' }}
                         ></i>
-                        <p>53 going</p>
+                        <p>{event.capacity - event.going} going</p>
                     </span>
                     <span>
                         <i
-                            class="fa-solid fa-ticket"
+                            className="fa-solid fa-ticket"
                             style={{ color: '#cfcfcf' }}
                         ></i>
-                        <p>FREE</p>
+                        <p>
+                            {event.ticketPrice == 0
+                                ? 'FREE'
+                                : event.ticketPrice}
+                        </p>
                     </span>
                 </div>
             </div>

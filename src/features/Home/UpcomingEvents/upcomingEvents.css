@@ -3,3 +3,8 @@
     flex-direction: column;
     gap: 1em;
 }
+
+.upcoming-events-cards-wrapper {
+    display: flex;
+    gap: 2em;
+}
