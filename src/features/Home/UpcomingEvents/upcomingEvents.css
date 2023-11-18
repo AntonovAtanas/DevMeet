@@ -6,5 +6,6 @@
 
 .upcoming-events-cards-wrapper {
     display: flex;
-    gap: 2em;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
