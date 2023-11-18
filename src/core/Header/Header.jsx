@@ -1,6 +1,7 @@
 import './header.css';
-import Navigation from './Navigation/Navigation';
+import { Link } from 'react-router-dom';
 
+import Navigation from './Navigation/Navigation';
 import Searchbar from './Searchbar/Searchbar';
 
 export default function Header() {
@@ -8,12 +9,12 @@ export default function Header() {
         <header>
             <div className="logo-search-wrapper">
                 <div className="logo-wrapper">
-                    <a href="#">
+                    <Link to="">
                         <img
                             src="/src/assets/devMeet-logo.png"
                             alt="devmeet-logo"
                         />
-                    </a>
+                    </Link>
                 </div>
                 <Searchbar />
             </div>

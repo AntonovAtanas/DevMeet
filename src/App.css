@@ -2,10 +2,16 @@
     display: flex;
     flex-direction: column;
     gap: 3em;
+    min-height: 100vh;
+}
+
+.footer-container {
+    margin-top: auto;
 }
 
 main {
     padding: 0 5%;
+    flex: 1;
 }
 
 /* main heading */
