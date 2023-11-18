@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './hero.css';
 
 export default function Hero() {
@@ -12,9 +13,9 @@ export default function Hero() {
                     events catalyze friendships, creating a dynamic network of
                     collaborative developers.
                 </p>
-                <a href="#" className="button-main">
+                <Link to="/events" className="button-main">
                     Find your next event
-                </a>
+                </Link>
             </div>
             <div className="hero-image">
                 <a href="#">
