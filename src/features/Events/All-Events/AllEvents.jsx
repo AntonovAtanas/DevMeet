@@ -61,6 +61,94 @@ export default function AllEvents() {
                 'https://venngage-wordpress.s3.amazonaws.com/uploads/2023/06/pink-and-blue-recycle-event-volunteer-poster-791x1024.png',
             id: 21,
         },
+        {
+            eventTitle: 'How does the QA role fit into an engineering team?',
+            location: 'John Atanasoff Forum, Sofia Tech Park',
+            date: 'Wednesday, November 22',
+            capacity: 100,
+            going: 43,
+            ticketPrice: 0,
+            imageUrl:
+                'https://secure.meetupstatic.com/photos/event/1/b/8/5/600_517027045.webp?w=384',
+            id: 5,
+        },
+        {
+            eventTitle: 'How does the QA role fit into an engineering team?',
+            location: 'John Atanasoff Forum, Sofia Tech Park',
+            date: 'Wednesday, November 22',
+            capacity: 100,
+            going: 43,
+            ticketPrice: 0,
+            imageUrl:
+                'https://venngage-wordpress.s3.amazonaws.com/uploads/2023/06/pink-and-blue-recycle-event-volunteer-poster-791x1024.png',
+            id: 21,
+        },
+        {
+            eventTitle: 'How does the QA role fit into an engineering team?',
+            location: 'John Atanasoff Forum, Sofia Tech Park',
+            date: 'Wednesday, November 22',
+            capacity: 100,
+            going: 43,
+            ticketPrice: 0,
+            imageUrl:
+                'https://secure.meetupstatic.com/photos/event/1/b/8/5/600_517027045.webp?w=384',
+            id: 5,
+        },
+        {
+            eventTitle: 'How does the QA role fit into an engineering team?',
+            location: 'John Atanasoff Forum, Sofia Tech Park',
+            date: 'Wednesday, November 22',
+            capacity: 100,
+            going: 43,
+            ticketPrice: 0,
+            imageUrl:
+                'https://venngage-wordpress.s3.amazonaws.com/uploads/2023/06/pink-and-blue-recycle-event-volunteer-poster-791x1024.png',
+            id: 21,
+        },
+        {
+            eventTitle: 'How does the QA role fit into an engineering team?',
+            location: 'John Atanasoff Forum, Sofia Tech Park',
+            date: 'Wednesday, November 22',
+            capacity: 100,
+            going: 43,
+            ticketPrice: 0,
+            imageUrl:
+                'https://secure.meetupstatic.com/photos/event/1/b/8/5/600_517027045.webp?w=384',
+            id: 5,
+        },
+        {
+            eventTitle: 'How does the QA role fit into an engineering team?',
+            location: 'John Atanasoff Forum, Sofia Tech Park',
+            date: 'Wednesday, November 22',
+            capacity: 100,
+            going: 43,
+            ticketPrice: 0,
+            imageUrl:
+                'https://venngage-wordpress.s3.amazonaws.com/uploads/2023/06/pink-and-blue-recycle-event-volunteer-poster-791x1024.png',
+            id: 21,
+        },
+        {
+            eventTitle: 'How does the QA role fit into an engineering team?',
+            location: 'John Atanasoff Forum, Sofia Tech Park',
+            date: 'Wednesday, November 22',
+            capacity: 100,
+            going: 43,
+            ticketPrice: 0,
+            imageUrl:
+                'https://secure.meetupstatic.com/photos/event/1/b/8/5/600_517027045.webp?w=384',
+            id: 5,
+        },
+        {
+            eventTitle: 'How does the QA role fit into an engineering team?',
+            location: 'John Atanasoff Forum, Sofia Tech Park',
+            date: 'Wednesday, November 22',
+            capacity: 100,
+            going: 43,
+            ticketPrice: 0,
+            imageUrl:
+                'https://venngage-wordpress.s3.amazonaws.com/uploads/2023/06/pink-and-blue-recycle-event-volunteer-poster-791x1024.png',
+            id: 21,
+        },
     ];
 
     // fetch all events via useEffect

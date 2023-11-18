@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './navigation.css';
 
 export default function Navigation() {
@@ -5,16 +6,16 @@ export default function Navigation() {
         <nav>
             <ul className="navigation">
                 <li>
-                    <a href="#">Home</a>
+                    <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <a href="#">All Events</a>
+                    <Link to="/events">All Events</Link>
                 </li>
                 <li>
-                    <a href="#">Add an Event</a>
+                    <Link to="/events/create">Add an Event</Link>
                 </li>
                 <li>
-                    <a href="#">Login</a>
+                    <Link to="/user/login">Login</Link>
                 </li>
             </ul>
         </nav>
