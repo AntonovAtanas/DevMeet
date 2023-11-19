@@ -15,6 +15,10 @@ h1 {
     gap: 1em;
 }
 
+.login-form form .input-wrapper input::placeholder {
+    padding-left: 7%;
+}
+
 .input-wrapper {
     position: relative;
     display: flex;
@@ -29,12 +33,7 @@ h1 {
     transform: translateY(-50%);
 }
 
-.input-wrapper input::placeholder {
-    padding-left: 7%;
-    transform: translateY(15%);
-}
-
-.button-main {
+.login-button {
     margin: 0 auto;
 }
 

@@ -32,7 +32,7 @@ export default function Login() {
                     />
                 </div>
 
-                <button className="button-main">Sign In</button>
+                <button className="button-main login-button">Sign In</button>
             </form>
             <Link to="/user/register">
                 <p className="register-redirect">

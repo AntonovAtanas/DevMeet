@@ -9,3 +9,7 @@
     text-decoration: none;
     color: #111111;
 }
+
+.default-input {
+    padding-left: 5%;
+}
