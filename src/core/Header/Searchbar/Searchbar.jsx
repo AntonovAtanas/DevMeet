@@ -4,7 +4,7 @@ export default function Searchbar() {
     return (
         <form className="search-bar">
             <input
-                className="input-search"
+                className="default-input"
                 type="search"
                 placeholder="Search event"
                 name="search"

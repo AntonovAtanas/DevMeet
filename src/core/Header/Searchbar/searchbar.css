@@ -14,13 +14,3 @@
     right: 5%;
     transform: translateY(-50%);
 }
-
-.input-search {
-    border-radius: 6px;
-    height: 42px;
-    border: 1px solid #efefef;
-    padding-left: 1em;
-    font-size: 1em;
-    outline: none;
-    width: 100%;
-}

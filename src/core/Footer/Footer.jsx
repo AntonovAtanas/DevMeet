@@ -3,7 +3,7 @@ import './footer.css';
 export default function Footer() {
     const year = new Date().getFullYear();
     return (
-        <div class="footer-container">
+        <div className="footer-container">
             <div className="separator"></div>
             <p className="footer-title">devMeet</p>
             <p className="footer-sub-title">

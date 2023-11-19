@@ -4,6 +4,7 @@ import Home from './features/Home/Home';
 import Footer from './core/Footer/Footer';
 import AllEvents from './features/Events/All-Events/AllEvents';
 import { Route, Routes } from 'react-router-dom';
+import Login from './features/User/Login/Login';
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/events" element={<AllEvents />} />
+                    <Route path="/user/login" element={<Login />} />
                 </Routes>
             </main>
             <Footer />
