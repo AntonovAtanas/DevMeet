@@ -14,3 +14,7 @@
     right: 5%;
     transform: translateY(-50%);
 }
+
+.search-bar .default-input {
+    padding-left: 3%;
+}

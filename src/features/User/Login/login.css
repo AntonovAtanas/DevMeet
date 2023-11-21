@@ -15,10 +15,6 @@ h1 {
     gap: 1em;
 }
 
-.login-form form .input-wrapper input::placeholder {
-    padding-left: 7%;
-}
-
 .input-wrapper {
     position: relative;
     display: flex;

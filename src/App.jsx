@@ -5,6 +5,7 @@ import Footer from './core/Footer/Footer';
 import AllEvents from './features/Events/All-Events/AllEvents';
 import { Route, Routes } from 'react-router-dom';
 import Login from './features/User/Login/Login';
+import Register from './features/User/Register/Register';
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/events" element={<AllEvents />} />
                     <Route path="/user/login" element={<Login />} />
+                    <Route path="/user/register" element={<Register />} />
                 </Routes>
             </main>
             <Footer />
