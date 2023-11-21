@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function Register() {
     return (
-        <div className="login-form">
+        <div className="auth-form">
             <h1>Register</h1>
             <form>
                 <div className="input-wrapper">
@@ -23,7 +23,7 @@ export default function Register() {
                         style={{ color: '#28587B' }}
                     ></i>
                     <input
-                        type="text"
+                        type="password"
                         name="password"
                         placeholder="Password..."
                         className="default-input"
@@ -35,17 +35,17 @@ export default function Register() {
                         style={{ color: '#28587B' }}
                     ></i>
                     <input
-                        type="text"
+                        type="password"
                         name="repeatPassword"
                         placeholder="Repeat password..."
                         className="default-input"
                     />
                 </div>
 
-                <button className="button-main login-button">Register</button>
+                <button className="button-main auth-button">Register</button>
             </form>
             <Link to="/user/login">
-                <p className="register-redirect">
+                <p className="auth-redirect">
                     Already have an account? Sign in here!
                 </p>
             </Link>

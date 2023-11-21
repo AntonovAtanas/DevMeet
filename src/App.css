@@ -41,3 +41,43 @@ main {
     outline: none;
     width: 100%;
 }
+
+.auth-form h1 {
+    font-family: 'Exo 2', sans-serif;
+}
+
+.auth-form {
+    margin: auto;
+    width: 400px;
+    height: auto;
+}
+
+.auth-form form {
+    margin: 1em 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.auth-button {
+    margin: 0 auto;
+}
+
+.auth-redirect {
+    text-align: center;
+    text-decoration: underline;
+}
