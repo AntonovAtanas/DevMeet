@@ -1,61 +1,27 @@
-import { isValidElement, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './login.css';
 
 import { inputPatterns } from '../../../shared/input-validation-pattern/input-patterns';
+import useAuth from '../useAuth';
 
 export default function Login() {
-    const [formData, setFormData] = useState({
+    const {
+        formValues,
+        handleInputChange,
+        handleSubmit,
+        isFormValid,
+        handleInputBlur,
+        isInputBlurred,
+    } = useAuth({
         username: '',
         password: '',
     });
 
-    const [isFormValid, setIsFormValid] = useState({
-        username: false,
-        password: false,
-    });
-
-    const [isInputBlurred, setIsInputBlurred] = useState({
-        username: false,
-        password: false,
-    });
-
-    function loginSubmitHandler(e) {
-        e.preventDefault();
-
-        console.log(formData);
-    }
-
-    function handleInputChange(e) {
-        const { name, value } = e.target;
-
-        const pattern = new RegExp(inputPatterns[name]);
-        const isValidInput = pattern.test(value);
-
-        // update if input field is valid or invalid
-        setIsFormValid({
-            ...isFormValid,
-            [name]: isValidInput,
-        });
-
-        // update form state
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    }
-
-    function handleInputBlur(e) {
-        const inputName = e.target.name;
-
-        setIsInputBlurred({ ...isInputBlurred, [inputName]: true });
-    }
-
     return (
         <div className="auth-form">
             <h1>Sign In</h1>
-            <form onSubmit={loginSubmitHandler}>
+            <form onSubmit={handleSubmit}>
                 <div className="input-wrapper">
                     <i
                         className="fa-solid fa-user"
@@ -65,7 +31,6 @@ export default function Login() {
                         type="text"
                         name="username"
                         placeholder="Username..."
-                        // className="default-input"
                         className={
                             !isFormValid.username && isInputBlurred.username
                                 ? 'default-input error-input'
@@ -74,6 +39,7 @@ export default function Login() {
                         pattern={inputPatterns.username}
                         onChange={handleInputChange}
                         onBlur={handleInputBlur}
+                        value={formValues.username}
                     />
                 </div>
                 {!isFormValid.username && isInputBlurred.username && (
@@ -98,6 +64,7 @@ export default function Login() {
                         pattern={inputPatterns.password}
                         onChange={handleInputChange}
                         onBlur={handleInputBlur}
+                        value={formValues.password}
                     />
                 </div>
                 {!isFormValid.password && isInputBlurred.password && (
