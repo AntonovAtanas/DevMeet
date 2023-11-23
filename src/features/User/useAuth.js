@@ -10,7 +10,13 @@ export default function useAuth(initialValues) {
         const { name, value } = e.target;
 
         const pattern = new RegExp(inputPatterns[name]);
-        const isValidInput = pattern.test(value);
+        let isValidInput = false;
+
+        if (name !== 'repeatPassword') {
+            isValidInput = pattern.test(value);
+        } else {
+            isValidInput = formValues.password == value;
+        }
 
         // update if input field is valid or invalid
         setIsFormValid({
@@ -34,9 +40,12 @@ export default function useAuth(initialValues) {
     function handleSubmit(e, formType) {
         e.preventDefault();
 
-        console.log(formType);
-        //  TODO
-        console.log(formValues);
+        // TODO
+        if (formType === 'login') {
+            console.log('submitted login form');
+        } else {
+            console.log('submitted register form');
+        }
     }
 
     return {
