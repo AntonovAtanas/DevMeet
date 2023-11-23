@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 
 import useAuth from '../useAuth';
-import { inputPatterns } from '../../../shared/input-validation-pattern/input-patterns';
 
 export default function Register() {
     const {
@@ -34,7 +33,6 @@ export default function Register() {
                         value={formValues.username}
                         onChange={handleInputChange}
                         onBlur={handleInputBlur}
-                        // pattern={inputPatterns.username}
                     />
                 </div>
                 {!isFormValid.username && isInputBlurred.username && (
@@ -60,7 +58,6 @@ export default function Register() {
                         value={formValues.password}
                         onChange={handleInputChange}
                         onBlur={handleInputBlur}
-                        // pattern={inputPatterns.password}
                     />
                 </div>
                 {!isFormValid.password && isInputBlurred.password && (
