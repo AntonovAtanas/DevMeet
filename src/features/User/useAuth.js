@@ -31,9 +31,10 @@ export default function useAuth(initialValues) {
         setIsInputBlurred({ ...isInputBlurred, [inputName]: true });
     }
 
-    function handleSubmit(e) {
+    function handleSubmit(e, formType) {
         e.preventDefault();
 
+        console.log(formType);
         //  TODO
         console.log(formValues);
     }

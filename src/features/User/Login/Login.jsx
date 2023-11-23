@@ -21,7 +21,7 @@ export default function Login() {
     return (
         <div className="auth-form">
             <h1>Sign In</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(e) => handleSubmit(e, 'login')}>
                 <div className="input-wrapper">
                     <i
                         className="fa-solid fa-user"
