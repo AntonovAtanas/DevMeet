@@ -10,12 +10,13 @@ export default function Register() {
         isFormValid,
         handleInputBlur,
         isInputBlurred,
-    } = useAuth({ username: '', password: '', repeatPassword: '' });
+    } = useAuth({ email: '', password: '', repeatPassword: '' });
 
     return (
         <div className="auth-form">
             <h1>Register</h1>
             <form onSubmit={(e) => handleSubmit(e, 'register')}>
+                {/* email */}
                 <div className="input-wrapper">
                     <i
                         className="fa-solid fa-user"
@@ -23,21 +24,71 @@ export default function Register() {
                     ></i>
                     <input
                         type="text"
-                        name="username"
-                        placeholder="Username..."
+                        name="email"
+                        placeholder="Email..."
                         className={
-                            isInputBlurred.username && !isFormValid.username
+                            isInputBlurred.email && !isFormValid.email
                                 ? 'default-input error-input'
                                 : 'default-input'
                         }
-                        value={formValues.username}
+                        value={formValues.email}
                         onChange={handleInputChange}
                         onBlur={handleInputBlur}
                     />
                 </div>
-                {!isFormValid.username && isInputBlurred.username && (
+                {!isFormValid.email && isInputBlurred.email && (
+                    <span className="error-message">Email is not valid</span>
+                )}
+
+                {/* first name */}
+                <div className="input-wrapper">
+                    <i
+                        className="fa-solid fa-user"
+                        style={{ color: '#28587B' }}
+                    ></i>
+                    <input
+                        type="text"
+                        name="firstName"
+                        placeholder="First name..."
+                        className={
+                            isInputBlurred.firstName && !isFormValid.firstName
+                                ? 'default-input error-input'
+                                : 'default-input'
+                        }
+                        value={formValues.firstName}
+                        onChange={handleInputChange}
+                        onBlur={handleInputBlur}
+                    />
+                </div>
+                {!isFormValid.firstName && isInputBlurred.firstName && (
                     <span className="error-message">
-                        Username must be between 4-12 characters
+                        First name must be between 2-12 characters
+                    </span>
+                )}
+
+                {/* last name */}
+                <div className="input-wrapper">
+                    <i
+                        className="fa-solid fa-user"
+                        style={{ color: '#28587B' }}
+                    ></i>
+                    <input
+                        type="text"
+                        name="lastName"
+                        placeholder="Last name..."
+                        className={
+                            isInputBlurred.lastName && !isFormValid.lastName
+                                ? 'default-input error-input'
+                                : 'default-input'
+                        }
+                        value={formValues.lastName}
+                        onChange={handleInputChange}
+                        onBlur={handleInputBlur}
+                    />
+                </div>
+                {!isFormValid.lastName && isInputBlurred.lastName && (
+                    <span className="error-message">
+                        Last name must be between 2-12 characters
                     </span>
                 )}
 
@@ -106,7 +157,7 @@ export default function Register() {
                 <button
                     className="button-main auth-button"
                     disabled={
-                        !isFormValid.username ||
+                        !isFormValid.email ||
                         !isFormValid.password ||
                         !isFormValid.repeatPassword
                     }

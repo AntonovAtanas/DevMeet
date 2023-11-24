@@ -14,7 +14,7 @@ export default function Login() {
         handleInputBlur,
         isInputBlurred,
     } = useAuth({
-        username: '',
+        email: '',
         password: '',
     });
 
@@ -29,22 +29,22 @@ export default function Login() {
                     ></i>
                     <input
                         type="text"
-                        name="username"
-                        placeholder="Username..."
+                        name="email"
+                        placeholder="Email..."
                         className={
-                            !isFormValid.username && isInputBlurred.username
+                            !isFormValid.email && isInputBlurred.email
                                 ? 'default-input error-input'
                                 : 'default-input'
                         }
-                        pattern={inputPatterns.username}
+                        // pattern={inputPatterns.email}
                         onChange={handleInputChange}
                         onBlur={handleInputBlur}
-                        value={formValues.username}
+                        value={formValues.email}
                     />
                 </div>
-                {!isFormValid.username && isInputBlurred.username && (
+                {!isFormValid.email && isInputBlurred.email && (
                     <span className="error-message">
-                        Username must be between 4-12 characters
+                        Not valid email address
                     </span>
                 )}
                 <div className="input-wrapper">
@@ -75,7 +75,7 @@ export default function Login() {
 
                 <button
                     className="button-main auth-button"
-                    disabled={!isFormValid.username || !isFormValid.password}
+                    disabled={!isFormValid.email || !isFormValid.password}
                 >
                     Sign In
                 </button>

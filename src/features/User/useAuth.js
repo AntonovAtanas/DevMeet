@@ -43,8 +43,10 @@ export default function useAuth(initialValues) {
         // TODO
         if (formType === 'login') {
             console.log('submitted login form');
+            console.log(formValues);
         } else {
             console.log('submitted register form');
+            console.log(formValues);
         }
     }
 
