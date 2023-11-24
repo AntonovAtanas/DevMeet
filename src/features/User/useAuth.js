@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { inputPatterns } from '../../shared/input-validation-pattern/input-patterns';
+import { userService } from '../../services/users-service';
 
 export default function useAuth(initialValues) {
     const [formValues, setValues] = useState(initialValues);
     const [isFormValid, setIsFormValid] = useState({});
     const [isInputBlurred, setIsInputBlurred] = useState({});
+    const [errorMessage, setErrorMessage] = useState('');
 
     function handleInputChange(e) {
         const { name, value } = e.target;
@@ -37,16 +39,29 @@ export default function useAuth(initialValues) {
         setIsInputBlurred({ ...isInputBlurred, [inputName]: true });
     }
 
-    function handleSubmit(e, formType) {
+    async function handleSubmit(e, formType) {
         e.preventDefault();
 
         // TODO
         if (formType === 'login') {
             console.log('submitted login form');
-            console.log(formValues);
+            // let { data, error } = await supabase.auth.signInWithPassword({
+            //     email: '',
+            //     password: '',
+            // });
+
+            // console.log(data);
         } else {
-            console.log('submitted register form');
-            console.log(formValues);
+            try {
+                const result = await userService.register(formValues);
+                if (result.error) {
+                    throw new Error(result.error);
+                }
+
+                setErrorMessage('');
+            } catch (error) {
+                setErrorMessage(error.message);
+            }
         }
     }
 
@@ -57,5 +72,6 @@ export default function useAuth(initialValues) {
         isFormValid,
         handleInputBlur,
         isInputBlurred,
+        errorMessage,
     };
 }

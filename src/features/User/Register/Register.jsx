@@ -10,7 +10,14 @@ export default function Register() {
         isFormValid,
         handleInputBlur,
         isInputBlurred,
-    } = useAuth({ email: '', password: '', repeatPassword: '' });
+        errorMessage,
+    } = useAuth({
+        email: '',
+        password: '',
+        firstName: '',
+        lastName: '',
+        repeatPassword: '',
+    });
 
     return (
         <div className="auth-form">
@@ -92,6 +99,7 @@ export default function Register() {
                     </span>
                 )}
 
+                {/* password */}
                 <div className="input-wrapper">
                     <i
                         className="fa-solid fa-lock"
@@ -117,6 +125,7 @@ export default function Register() {
                     </span>
                 )}
 
+                {/* repeat password */}
                 <div className="input-wrapper">
                     <i
                         className="fa-solid fa-lock"
@@ -153,6 +162,13 @@ export default function Register() {
                             Passwords do not match
                         </span>
                     )}
+
+                {/* error message by server */}
+                {errorMessage && (
+                    <span className="error-message">
+                        {errorMessage.split(': ')[1]}
+                    </span>
+                )}
 
                 <button
                     className="button-main auth-button"
