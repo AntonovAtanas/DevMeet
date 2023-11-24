@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { inputPatterns } from '../../shared/input-validation-pattern/input-patterns';
 import { userService } from '../../services/users-service';
+import { useNavigate } from 'react-router-dom';
 
 export default function useAuth(initialValues) {
     const [formValues, setValues] = useState(initialValues);
     const [isFormValid, setIsFormValid] = useState({});
     const [isInputBlurred, setIsInputBlurred] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
+
+    const navigate = useNavigate();
 
     function handleInputChange(e) {
         const { name, value } = e.target;
@@ -59,6 +62,7 @@ export default function useAuth(initialValues) {
                 }
 
                 setErrorMessage('');
+                return navigate('/events');
             } catch (error) {
                 setErrorMessage(error.message);
             }
