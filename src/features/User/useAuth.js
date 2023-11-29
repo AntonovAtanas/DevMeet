@@ -49,7 +49,6 @@ export default function useAuth(initialValues) {
     async function handleSubmit(e, formType) {
         e.preventDefault();
 
-        // TODO
         if (formType === 'login') {
             try {
                 let { data, error } = await userService.login(formValues);
