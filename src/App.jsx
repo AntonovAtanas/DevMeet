@@ -7,21 +7,24 @@ import { Route, Routes } from 'react-router-dom';
 import Login from './features/User/Login/Login';
 import Register from './features/User/Register/Register';
 import Logout from './features/User/Logout/Logout';
+import { AuthProvider } from './contexts/authContext';
 
 function App() {
     return (
         <div className="container">
-            <Header />
-            <main>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/events" element={<AllEvents />} />
-                    <Route path="/user/register" element={<Register />} />
-                    <Route path="/user/login" element={<Login />} />
-                    <Route path="/user/logout" element={<Logout />} />
-                </Routes>
-            </main>
-            <Footer />
+            <AuthProvider>
+                <Header />
+                <main>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/events" element={<AllEvents />} />
+                        <Route path="/user/register" element={<Register />} />
+                        <Route path="/user/login" element={<Login />} />
+                        <Route path="/user/logout" element={<Logout />} />
+                    </Routes>
+                </main>
+                <Footer />
+            </AuthProvider>
         </div>
     );
 }

@@ -26,6 +26,7 @@ async function register(userData) {
 async function logout() {
     const { error } = await supabase.auth.signOut();
 
+    localStorage.clear();
     return error;
 }
 

@@ -76,9 +76,7 @@ export default function Login() {
                 )}
 
                 {errorMessage && (
-                    <span className="error-message">
-                        {errorMessage.split(': ')[1]}
-                    </span>
+                    <span className="error-message">{errorMessage}</span>
                 )}
 
                 <button
