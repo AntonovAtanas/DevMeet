@@ -42,6 +42,33 @@ main {
     width: 100%;
 }
 
+textarea.default-input {
+    resize: vertical;
+    min-height: 5em;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 0.6em;
+    font-size: 1em;
+}
+
+input[type=date] {
+    font-family: 'Roboto', sans-serif;
+    color: #757575;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+
 .auth-form h1 {
     font-family: 'Exo 2', sans-serif;
 }
@@ -71,7 +98,7 @@ main {
 .input-wrapper i {
     position: absolute;
     left: 5%;
-    top: 50%;
+    top: 1.3em;
     transform: translateY(-50%);
 }
 
