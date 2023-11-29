@@ -109,6 +109,7 @@ export default function Register() {
                         type="password"
                         name="password"
                         placeholder="Password..."
+                        autoComplete="on"
                         className={
                             isInputBlurred.password && !isFormValid.password
                                 ? 'default-input error-input'
@@ -121,7 +122,7 @@ export default function Register() {
                 </div>
                 {!isFormValid.password && isInputBlurred.password && (
                     <span className="error-message">
-                        Password must be between 4-12 characters
+                        Password must be between 6-12 characters
                     </span>
                 )}
 
@@ -135,6 +136,7 @@ export default function Register() {
                         type="password"
                         name="repeatPassword"
                         placeholder="Repeat password..."
+                        autoComplete="on"
                         className={
                             isInputBlurred.repeatPassword &&
                             (!isFormValid.repeatPassword ||
@@ -149,10 +151,10 @@ export default function Register() {
                     />
                 </div>
                 {isInputBlurred.repeatPassword &&
-                    (formValues.repeatPassword.length < 4 ||
+                    (formValues.repeatPassword.length < 6 ||
                         formValues.repeatPassword.length > 12) && (
                         <span className="error-message">
-                            Password must be between 4-12 characters
+                            Password must be between 6-12 characters
                         </span>
                     )}
 

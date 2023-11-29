@@ -56,6 +56,7 @@ export default function Login() {
                         type="password"
                         name="password"
                         placeholder="Password..."
+                        autoComplete="on"
                         className={
                             !isFormValid.password && isInputBlurred.password
                                 ? 'default-input error-input'

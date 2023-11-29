@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import supabase from './supabase';
 
 async function register(userData) {
@@ -14,6 +15,13 @@ async function register(userData) {
     return { data, error };
 }
 
+async function logout() {
+    const { error } = await supabase.auth.signOut();
+
+    return error;
+}
+
 export const userService = {
     register,
+    logout,
 };
