@@ -81,7 +81,7 @@ export default function CreateEvent() {
                     <input
                         type="text"
                         name="location"
-                        placeholder="Event description..."
+                        placeholder="Event location..."
                         className={
                             isInputBlurred.location && !isFormValid.location
                                 ? 'default-input error-input'
