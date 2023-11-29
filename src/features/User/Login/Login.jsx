@@ -13,6 +13,7 @@ export default function Login() {
         isFormValid,
         handleInputBlur,
         isInputBlurred,
+        errorMessage,
     } = useAuth({
         email: '',
         password: '',
@@ -70,7 +71,13 @@ export default function Login() {
                 </div>
                 {!isFormValid.password && isInputBlurred.password && (
                     <span className="error-message">
-                        Password must be between 4-12 characters
+                        Password must be between 6-12 characters
+                    </span>
+                )}
+
+                {errorMessage && (
+                    <span className="error-message">
+                        {errorMessage.split(': ')[1]}
                     </span>
                 )}
 

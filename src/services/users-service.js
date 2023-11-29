@@ -1,5 +1,13 @@
-import { useNavigate } from 'react-router-dom';
 import supabase from './supabase';
+
+async function login(userData) {
+    let { data, error } = await supabase.auth.signInWithPassword(userData);
+
+    return {
+        data,
+        error,
+    };
+}
 
 async function register(userData) {
     let { data, error } = await supabase.auth.signUp({
@@ -22,6 +30,7 @@ async function logout() {
 }
 
 export const userService = {
+    login,
     register,
     logout,
 };

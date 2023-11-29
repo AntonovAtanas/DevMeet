@@ -47,13 +47,17 @@ export default function useAuth(initialValues) {
 
         // TODO
         if (formType === 'login') {
-            console.log('submitted login form');
-            // let { data, error } = await supabase.auth.signInWithPassword({
-            //     email: '',
-            //     password: '',
-            // });
+            try {
+                let { data, error } = await userService.login(formValues);
+                if (error) {
+                    throw new Error(error);
+                }
 
-            // console.log(data);
+                setErrorMessage('');
+                return navigate('/');
+            } catch (error) {
+                setErrorMessage(error.message);
+            }
         } else {
             try {
                 const result = await userService.register(formValues);
@@ -62,7 +66,7 @@ export default function useAuth(initialValues) {
                 }
 
                 setErrorMessage('');
-                return navigate('/events');
+                return navigate('/');
             } catch (error) {
                 setErrorMessage(error.message);
             }
