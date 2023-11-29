@@ -8,6 +8,7 @@ import Login from './features/User/Login/Login';
 import Register from './features/User/Register/Register';
 import Logout from './features/User/Logout/Logout';
 import { AuthProvider } from './contexts/authContext';
+import CreateEvent from './features/Events/Create-Event/CreateEvent';
 
 function App() {
     return (
@@ -18,6 +19,10 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/events" element={<AllEvents />} />
+                        <Route
+                            path="/events/create"
+                            element={<CreateEvent />}
+                        />
                         <Route path="/user/register" element={<Register />} />
                         <Route path="/user/login" element={<Login />} />
                         <Route path="/user/logout" element={<Logout />} />

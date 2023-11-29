@@ -10,7 +10,7 @@ export function AuthProvider({ children }) {
             localStorage.getItem(LOCALSTORAGE_AUTH_KEY)
         );
 
-        return userData ? userData.user.id : null;
+        return userData ? userData.id : null;
     });
 
     const setUserDataInLocalStorage = (userData) => {
