@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
 import './navigation.css';
+import { useContext } from 'react';
+import AuthContext from '../../../contexts/authContext';
 
 export default function Navigation() {
+    const { userId } = useContext(AuthContext);
+
     return (
         <nav>
             <ul className="navigation">
@@ -14,12 +18,20 @@ export default function Navigation() {
                 <li>
                     <Link to="/events/create">Add an Event</Link>
                 </li>
-                <li>
-                    <Link to="/user/login">Login</Link>
-                </li>
-                <li>
-                    <Link to="/user/logout">Logout</Link>
-                </li>
+                {userId ? (
+                    <li>
+                        <Link to="/user/logout">Logout</Link>
+                    </li>
+                ) : (
+                    <>
+                        <li>
+                            <Link to="/user/login">Login</Link>
+                        </li>
+                        <li>
+                            <Link to="/user/register">Register</Link>
+                        </li>
+                    </>
+                )}
             </ul>
         </nav>
     );
