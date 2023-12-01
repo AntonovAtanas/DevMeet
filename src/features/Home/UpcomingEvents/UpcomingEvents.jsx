@@ -3,7 +3,7 @@ import './upcomingEvents.css';
 
 const tempDB = [
     {
-        eventTitle: 'How does the QA role fit into an engineering team?',
+        title: 'How does the QA role fit into an engineering team?',
         location: 'John Atanasoff Forum, Sofia Tech Park',
         date: 'Wednesday, November 22',
         capacity: 100,
@@ -14,7 +14,7 @@ const tempDB = [
         id: 2,
     },
     {
-        eventTitle: 'How does the QA role fit into an engineering team?',
+        title: 'How does the QA role fit into an engineering team?',
         location: 'John Atanasoff Forum, Sofia Tech Park',
         date: 'Wednesday, November 22',
         capacity: 100,
@@ -25,7 +25,7 @@ const tempDB = [
         id: 3,
     },
     {
-        eventTitle: 'How does the QA role fit into an engineering team?',
+        title: 'How does the QA role fit into an engineering team?',
         location: 'John Atanasoff Forum, Sofia Tech Park',
         date: 'Wednesday, November 22',
         capacity: 100,
@@ -36,7 +36,7 @@ const tempDB = [
         id: 4,
     },
     {
-        eventTitle: 'How does the QA role fit into an engineering team?',
+        title: 'How does the QA role fit into an engineering team?',
         location: 'John Atanasoff Forum, Sofia Tech Park',
         date: 'Wednesday, November 22',
         capacity: 100,
@@ -47,7 +47,7 @@ const tempDB = [
         id: 5,
     },
     {
-        eventTitle: 'How does the QA role fit into an engineering team?',
+        title: 'How does the QA role fit into an engineering team?',
         location: 'John Atanasoff Forum, Sofia Tech Park',
         date: 'Wednesday, November 22',
         capacity: 100,

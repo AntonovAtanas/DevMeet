@@ -15,8 +15,8 @@ export default function AllEvents() {
         eventsService
             .getAllEvents()
             .then((events) => {
-                // setAllEvents(events.data);
-                // setIsLoading(false);
+                setAllEvents(events.data);
+                setIsLoading(false);
             })
             .catch((err) => {
                 setError(err.message);

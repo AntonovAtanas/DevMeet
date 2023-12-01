@@ -3,12 +3,12 @@ import './eventCard.css';
 
 export default function EventCard({ event }) {
     return (
-        <div className="event-card">
-            <Link to={`/events/${event.id}`}>
+        <Link to={`/events/${event.id}`}>
+            <div className="event-card">
                 <span className="card-image-wrapper">
                     <img src={event.imageUrl} alt={event.eventTitle} />
                 </span>
-                <h3>{event.eventTitle}</h3>
+                <h3>{event.title}</h3>
                 <span>
                     <i
                         className="fa-solid fa-location-dot"
@@ -43,7 +43,7 @@ export default function EventCard({ event }) {
                         </p>
                     </span>
                 </div>
-            </Link>
-        </div>
+            </div>
+        </Link>
     );
 }
