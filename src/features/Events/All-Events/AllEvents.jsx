@@ -1,9 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './allEvents.css';
+
 import EventCard from '../../../shared/EventCard/EventCard';
+import eventsService from '../../../services/events-service';
 
 export default function AllEvents() {
     const [allEvents, setAllEvents] = useState([]);
+    const [error, setError] = useState([]);
+
+    // get all events
+    useEffect(() => {
+        eventsService
+            .getAllEvents()
+            .then((events) => {
+                setAllEvents(events.data);
+            })
+            .catch((err) => {
+                setError(err.message);
+            });
+    }, []);
 
     const tempDB = [
         {
@@ -151,10 +166,10 @@ export default function AllEvents() {
         // },
     ];
 
-    // fetch all events via useEffect
     return (
         <div className="all-events-wrapper">
-            {tempDB.map((event) => (
+            {allEvents.length < 1 && <p>There are no events yet</p>}
+            {allEvents.map((event) => (
                 <EventCard event={event} key={event.id} />
             ))}
         </div>

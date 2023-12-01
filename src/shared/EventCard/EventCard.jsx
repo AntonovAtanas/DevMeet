@@ -28,7 +28,7 @@ export default function EventCard({ event }) {
                             className="fa-solid fa-check"
                             style={{ color: '#cfcfcf' }}
                         ></i>
-                        <p>{event.capacity - event.going} going</p>
+                        <p>{event.going} going</p>
                     </span>
                     <span>
                         <i
@@ -38,7 +38,7 @@ export default function EventCard({ event }) {
                         <p>
                             {event.ticketPrice == 0
                                 ? 'FREE'
-                                : event.ticketPrice}
+                                : `${event.ticketPrice} BGN`}
                         </p>
                     </span>
                 </div>

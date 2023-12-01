@@ -8,6 +8,12 @@ async function addEvent(newEvent) {
     return { data, error };
 }
 
+async function getAllEvents() {
+    const { data, error } = await supabase.from('Events').select('*');
+    return { data, error };
+}
+
 export default {
     addEvent,
+    getAllEvents,
 };
