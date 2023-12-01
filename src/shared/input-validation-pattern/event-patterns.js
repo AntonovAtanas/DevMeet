@@ -4,4 +4,5 @@ export const eventPatterns = {
     description: '^.{20,500}$',
     ticketPrice: '^[0-9]+$',
     capacity: '^[0-9]+$',
+    location: '^[A-Za-z0-9 ]+, [A-Za-z]+$',
 };
