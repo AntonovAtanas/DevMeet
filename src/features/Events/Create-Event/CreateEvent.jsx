@@ -81,7 +81,7 @@ export default function CreateEvent() {
                     <input
                         type="text"
                         name="location"
-                        placeholder="Event location..."
+                        placeholder="Address, City"
                         className={
                             isInputBlurred.location && !isFormValid.location
                                 ? 'default-input error-input'
@@ -94,7 +94,8 @@ export default function CreateEvent() {
                 </div>
                 {!isFormValid.location && isInputBlurred.location && (
                     <span className="error-message">
-                        The description must be between 20 and 500 characters!
+                        Location must include address and city separated by a
+                        comma!
                     </span>
                 )}
 
@@ -113,6 +114,7 @@ export default function CreateEvent() {
                                 ? 'default-input error-input'
                                 : 'default-input'
                         }
+                        style={{ color: formValues.date ? 'black' : '#757575' }}
                         value={formValues.date}
                         onChange={handleInputChange}
                         onBlur={handleInputBlur}

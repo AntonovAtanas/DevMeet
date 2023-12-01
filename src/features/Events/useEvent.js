@@ -1,11 +1,16 @@
 import { useState } from 'react';
 
 import { eventPatterns } from '../../shared/input-validation-pattern/event-patterns';
+import eventsService from '../../services/events-service';
+import { useNavigate } from 'react-router-dom';
 
 export default function useEvent(initialValues) {
     const [formValues, setValues] = useState(initialValues);
     const [isInputBlurred, setIsInputBlurred] = useState({});
     const [isFormValid, setIsFormValid] = useState({});
+    const [error, setError] = useState(null);
+
+    const navigate = useNavigate();
 
     function handleInputBlur(e) {
         const inputName = e.target.name;
@@ -31,9 +36,18 @@ export default function useEvent(initialValues) {
         });
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        console.log('add event submit');
+
+        try {
+            const addedEvent = await eventsService.addEvent(formValues);
+            // TODO: Add event in eventsContext
+            console.log(addedEvent);
+            navigate('/events');
+        } catch (error) {
+            console.log(error);
+            setError(error.message);
+        }
     }
     return {
         formValues,
@@ -42,5 +56,6 @@ export default function useEvent(initialValues) {
         isInputBlurred,
         handleInputChange,
         handleSubmit,
+        error,
     };
 }
