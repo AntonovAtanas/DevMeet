@@ -4,3 +4,7 @@
     row-gap: 3em;
     column-gap: 5em;
 }
+
+.all-events-wrapper .ldsRing {
+    margin: 0 auto;
+}

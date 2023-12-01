@@ -10,6 +10,7 @@ import Register from './features/User/Register/Register';
 import Logout from './features/User/Logout/Logout';
 import { AuthProvider } from './contexts/authContext';
 import CreateEvent from './features/Events/Create-Event/CreateEvent';
+import EventDetails from './features/Events/Event-Details/EventDetails';
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                             path="/events/create"
                             element={<CreateEvent />}
                         />
+                        <Route path="/events/:id" element={<EventDetails />} />
                         <Route path="/user/register" element={<Register />} />
                         <Route path="/user/login" element={<Login />} />
                         <Route path="/user/logout" element={<Logout />} />

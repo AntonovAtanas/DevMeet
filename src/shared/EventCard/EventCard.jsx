@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom';
 import './eventCard.css';
 
 export default function EventCard({ event }) {
     return (
-        <a href="#">
-            <div className="event-card">
+        <div className="event-card">
+            <Link to={`/events/${event.id}`}>
                 <span className="card-image-wrapper">
                     <img src={event.imageUrl} alt={event.eventTitle} />
                 </span>
@@ -42,7 +43,7 @@ export default function EventCard({ event }) {
                         </p>
                     </span>
                 </div>
-            </div>
-        </a>
+            </Link>
+        </div>
     );
 }
