@@ -52,7 +52,6 @@ textarea.default-input {
 
 input[type=date] {
     font-family: 'Roboto', sans-serif;
-    color: #757575;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
