@@ -1,14 +1,16 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { eventPatterns } from '../../shared/input-validation-pattern/event-patterns';
 import eventsService from '../../services/events-service';
 import { useNavigate } from 'react-router-dom';
+import AuthContext from '../../contexts/authContext';
 
 export default function useEvent(initialValues) {
     const [formValues, setValues] = useState(initialValues);
     const [isInputBlurred, setIsInputBlurred] = useState({});
     const [isFormValid, setIsFormValid] = useState({});
     const [error, setError] = useState(null);
+    const { userId } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -40,9 +42,11 @@ export default function useEvent(initialValues) {
         e.preventDefault();
 
         try {
-            const addedEvent = await eventsService.addEvent(formValues);
+            const addedEvent = await eventsService.addEvent({
+                ...formValues,
+                ownerId: userId,
+            });
             // TODO: Add event in eventsContext
-            console.log(addedEvent);
             navigate('/events');
         } catch (error) {
             console.log(error);
