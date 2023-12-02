@@ -13,6 +13,8 @@ async function getAllEvents() {
     return { data, error };
 }
 
+async function getEvent(eventId) {}
+
 export default {
     addEvent,
     getAllEvents,

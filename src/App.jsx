@@ -25,7 +25,10 @@ function App() {
                             path="/events/create"
                             element={<CreateEvent />}
                         />
-                        <Route path="/events/:id" element={<EventDetails />} />
+                        <Route
+                            path="/events/:eventId"
+                            element={<EventDetails />}
+                        />
                         <Route path="/user/register" element={<Register />} />
                         <Route path="/user/login" element={<Login />} />
                         <Route path="/user/logout" element={<Logout />} />

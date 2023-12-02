@@ -6,7 +6,7 @@ export default function EventCard({ event }) {
     const formattedDate = dateTransform(event.date);
 
     return (
-        <Link to={`/events/${event.id}`}>
+        <Link className="card-wrapper" to={`/events/${event.id}`}>
             <div className="event-card">
                 <span className="card-image-wrapper">
                     <img src={event.imageUrl} alt={event.eventTitle} />
