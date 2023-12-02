@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import './eventCard.css';
+import dateTransform from '../utils/date-transform';
 
 export default function EventCard({ event }) {
+    const formattedDate = dateTransform(event.date);
+
     return (
         <Link to={`/events/${event.id}`}>
             <div className="event-card">
@@ -21,7 +24,7 @@ export default function EventCard({ event }) {
                         className="fa-regular fa-calendar"
                         style={{ color: '#cfcfcf' }}
                     ></i>
-                    <p>{event.date}</p>
+                    <p>{formattedDate}</p>
                 </span>
                 <div className="going-price-wrapper">
                     <span>
