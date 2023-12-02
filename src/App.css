@@ -15,7 +15,8 @@ main {
 
 /* main heading */
 
-.heading-main {
+.heading-main,
+.event-headings {
     font-family: 'Exo 2', sans-serif;
 }
 

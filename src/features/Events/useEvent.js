@@ -45,6 +45,7 @@ export default function useEvent(initialValues) {
             const addedEvent = await eventsService.addEvent({
                 ...formValues,
                 ownerId: userId,
+                attendees: [],
             });
             // TODO: Add event in eventsContext
             navigate('/events');

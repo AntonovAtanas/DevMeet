@@ -25,8 +25,29 @@ async function getEvent(eventId) {
     return { data, error };
 }
 
+// go to event
+async function goToEvent(eventId, userId) {
+    const { data, error } = await supabase
+        .from('eventLikes')
+        .insert([{ eventId, userId }])
+        .select();
+}
+
+// check how many people are going
+
+async function goingPeopleToEvent(eventId) {
+    const { data, error } = await supabase
+        .from('eventLikes')
+        .select('*')
+        .eq('eventId', eventId);
+
+    return { data, error };
+}
+
 export default {
     addEvent,
     getAllEvents,
     getEvent,
+    goToEvent,
+    goingPeopleToEvent,
 };

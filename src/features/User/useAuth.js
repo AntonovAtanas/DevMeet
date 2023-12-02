@@ -68,7 +68,6 @@ export default function useAuth(initialValues) {
                 const { data, error } = await userService.register(formValues);
 
                 if (error) {
-                    console.log(error);
                     throw new Error(error);
                 }
 

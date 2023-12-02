@@ -1,5 +1,42 @@
 .event-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
     margin: 1em auto;
     width: 60%;
     border: 1px solid red;
+}
+
+.event-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 0 1em;
+}
+
+.event-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.event-ticket-price,
+.event-going,
+.event-date {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.event-button {
+    display: flex;
+}
+
+.button-going {
+    display: inline-flex;
+    gap: 0.5em;
+    margin: 0 auto;
+    align-items: center;
 }
