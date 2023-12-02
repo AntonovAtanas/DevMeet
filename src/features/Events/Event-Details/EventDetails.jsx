@@ -31,7 +31,8 @@ export default function EventDetails() {
         eventsService
             .goingPeopleToEvent(eventId)
             .then(({ data }) => {
-                setGoingPeople(data);
+                console.log(data.length);
+                setGoingPeople(data.length);
                 setIsLoading(false);
             })
             .catch(({ error }) => setError(error));
@@ -39,7 +40,6 @@ export default function EventDetails() {
         eventsService
             .isUserGoing(eventId, userId)
             .then(({ data }) => {
-                console.log(data);
                 setIsGoind(data.length > 0);
             })
             .catch(({ error }) => setError(error));
@@ -54,6 +54,26 @@ export default function EventDetails() {
         );
     }
     const formattedDate = dateTransform(event.date);
+
+    async function goToEventHandler() {
+        try {
+            const goingData = await eventsService.goToEvent(eventId, userId);
+            setGoingPeople((goingPeople) => (goingPeople += 1));
+            setIsGoind(true);
+        } catch (error) {
+            setError(error);
+        }
+    }
+
+    async function notGoToEventHandler() {
+        try {
+            await eventsService.notGoToEvent(eventId, userId);
+            setGoingPeople((goingPeople) => (goingPeople -= 1));
+            setIsGoind(false);
+        } catch (error) {
+            setError(error);
+        }
+    }
 
     return (
         <div className="event-container">
@@ -75,7 +95,7 @@ export default function EventDetails() {
                 </div>
 
                 {/* show only if there are less than 10 tickets left */}
-                {event.capacity - goingPeople.length < 10 && (
+                {event.capacity - goingPeople < 10 && (
                     <div className="event-tickets-left">
                         <p>Only {event.capacity - event.going} tickets left!</p>
                     </div>
@@ -98,7 +118,7 @@ export default function EventDetails() {
                         className="fa-solid fa-check"
                         style={{ color: '#33A394' }}
                     ></i>
-                    <p>{goingPeople.length} people going</p>
+                    <p>{goingPeople} people going</p>
                 </div>
 
                 <div className="event-description">
@@ -115,9 +135,7 @@ export default function EventDetails() {
                     {isGoing && userId && (
                         <a
                             className="button-main button-going"
-                            onClick={() =>
-                                eventsService.goToEvent(eventId, userId)
-                            }
+                            onClick={() => notGoToEventHandler()}
                         >
                             <i
                                 className="fa-solid fa-x"
@@ -129,9 +147,7 @@ export default function EventDetails() {
                     {!isGoing && userId && (
                         <a
                             className="button-main button-going"
-                            onClick={() =>
-                                eventsService.goToEvent(eventId, userId)
-                            }
+                            onClick={() => goToEventHandler()}
                         >
                             <i
                                 className="fa-solid fa-check"

@@ -31,6 +31,7 @@ async function goToEvent(eventId, userId) {
         .from('eventLikes')
         .insert([{ eventId, userId }])
         .select();
+    return data;
 }
 
 // check how many people are going
@@ -45,7 +46,6 @@ async function goingPeopleToEvent(eventId) {
 
 // check if user is confirmed as going
 async function isUserGoing(eventId, userId) {
-    console.log(userId);
     if (userId) {
         const { data, error } = await supabase
             .from('eventLikes')
@@ -58,6 +58,14 @@ async function isUserGoing(eventId, userId) {
     return false;
 }
 
+async function notGoToEvent(eventId, userId) {
+    const { error } = await supabase
+        .from('eventLikes')
+        .delete()
+        .eq('eventId', eventId)
+        .eq('userId', userId);
+}
+
 export default {
     addEvent,
     getAllEvents,
@@ -65,4 +73,5 @@ export default {
     goToEvent,
     goingPeopleToEvent,
     isUserGoing,
+    notGoToEvent,
 };
