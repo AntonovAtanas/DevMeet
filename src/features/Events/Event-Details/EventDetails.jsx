@@ -13,25 +13,34 @@ export default function EventDetails() {
     const [goingPeople, setGoingPeople] = useState(0);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [isGoing, setIsGoind] = useState(false);
 
     const { userId } = useContext(AuthContext);
     const { eventId } = useParams();
 
     useEffect(() => {
+        // get event details
         eventsService
             .getEvent(eventId)
             .then(({ data }) => {
                 setEvent(data[0]);
-                setIsLoading(false);
             })
             .catch(({ error }) => setError(error));
-    }, []);
 
-    useEffect(() => {
+        // get going people
         eventsService
             .goingPeopleToEvent(eventId)
             .then(({ data }) => {
                 setGoingPeople(data);
+                setIsLoading(false);
+            })
+            .catch(({ error }) => setError(error));
+
+        eventsService
+            .isUserGoing(eventId, userId)
+            .then(({ data }) => {
+                console.log(data);
+                setIsGoind(data.length > 0);
             })
             .catch(({ error }) => setError(error));
     }, []);
@@ -44,7 +53,6 @@ export default function EventDetails() {
             </div>
         );
     }
-
     const formattedDate = dateTransform(event.date);
 
     return (
@@ -104,16 +112,34 @@ export default function EventDetails() {
                 </div>
 
                 <div className="event-button">
-                    <a
-                        className="button-main button-going"
-                        onClick={() => eventsService.goToEvent(eventId, userId)}
-                    >
-                        <i
-                            className="fa-solid fa-check"
-                            style={{ color: '#fff' }}
-                        ></i>
-                        Going
-                    </a>
+                    {isGoing && userId && (
+                        <a
+                            className="button-main button-going"
+                            onClick={() =>
+                                eventsService.goToEvent(eventId, userId)
+                            }
+                        >
+                            <i
+                                className="fa-solid fa-x"
+                                style={{ color: '#fff' }}
+                            ></i>
+                            Not going
+                        </a>
+                    )}
+                    {!isGoing && userId && (
+                        <a
+                            className="button-main button-going"
+                            onClick={() =>
+                                eventsService.goToEvent(eventId, userId)
+                            }
+                        >
+                            <i
+                                className="fa-solid fa-check"
+                                style={{ color: '#fff' }}
+                            ></i>
+                            Going
+                        </a>
+                    )}
                 </div>
             </div>
         </div>

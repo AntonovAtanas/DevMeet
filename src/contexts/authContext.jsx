@@ -19,7 +19,7 @@ export function AuthProvider({ children }) {
 
         setUserId(() => {
             localStorage.setItem('userData', JSON.stringify(userData));
-            return userData;
+            return userData.id;
         });
     };
 

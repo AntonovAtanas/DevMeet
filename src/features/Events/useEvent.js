@@ -50,7 +50,6 @@ export default function useEvent(initialValues) {
             // TODO: Add event in eventsContext
             navigate('/events');
         } catch (error) {
-            console.log(error);
             setError(error.message);
         }
     }
