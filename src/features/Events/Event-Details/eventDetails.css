@@ -30,6 +30,11 @@
     gap: 0.5em;
 }
 
+.event-description .event-headings,
+.event-location .event-headings {
+    margin-bottom: 0.5em;
+}
+
 .event-button {
     display: flex;
     gap: 2em;

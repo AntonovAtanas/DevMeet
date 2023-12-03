@@ -1,9 +1,24 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import './eventCard.css';
+
 import dateTransform from '../utils/date-transform';
+import eventsService from '../../services/events-service';
 
 export default function EventCard({ event }) {
+    const [goingPeople, setGoingPeople] = useState(0);
+    const [error, setError] = useState(null);
     const formattedDate = dateTransform(event.date);
+
+    useEffect(() => {
+        eventsService
+            .goingPeopleToEvent(event.id)
+            .then(({ data }) => {
+                setGoingPeople(data.length);
+            })
+            .catch(({ error }) => setError(error));
+    }, []);
 
     return (
         <Link className="card-wrapper" to={`/events/${event.id}`}>
@@ -32,7 +47,7 @@ export default function EventCard({ event }) {
                             className="fa-solid fa-check"
                             style={{ color: '#cfcfcf' }}
                         ></i>
-                        <p>{event.going} going</p>
+                        <p>{goingPeople} going</p>
                     </span>
                     <span>
                         <i

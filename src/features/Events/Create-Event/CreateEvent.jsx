@@ -21,7 +21,7 @@ export default function CreateEvent() {
     return (
         <div className="add-event-wrapper">
             <h1>Add an Event</h1>
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form onSubmit={(e) => handleSubmit(e, 'create')}>
                 {/* event title */}
                 <div className="input-wrapper">
                     <i
@@ -44,7 +44,7 @@ export default function CreateEvent() {
                 </div>
                 {!isFormValid.title && isInputBlurred.title && (
                     <span className="error-message">
-                        The title must be between 4-30 characters!
+                        The title must be between 4-60 characters!
                     </span>
                 )}
 

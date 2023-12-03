@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { eventPatterns } from '../../shared/input-validation-pattern/event-patterns';
 import eventsService from '../../services/events-service';
-import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../contexts/authContext';
 
 export default function useEvent(initialValues) {
@@ -38,19 +38,28 @@ export default function useEvent(initialValues) {
         });
     }
 
-    async function handleSubmit(e) {
+    async function handleSubmit(e, formType) {
         e.preventDefault();
 
-        try {
-            const addedEvent = await eventsService.addEvent({
-                ...formValues,
-                ownerId: userId,
-                attendees: [],
-            });
-            // TODO: Add event in eventsContext
-            navigate('/events');
-        } catch (error) {
-            setError(error.message);
+        // create event
+        if (formType == 'create') {
+            try {
+                await eventsService.addEvent({
+                    ...formValues,
+                    ownerId: userId,
+                });
+                navigate('/events');
+            } catch (error) {
+                setError(error.message);
+            }
+        } else {
+            // edit event
+            try {
+                await eventsService.editEvent(formValues);
+                navigate('/events');
+            } catch (error) {
+                setError(error);
+            }
         }
     }
     return {
@@ -61,5 +70,7 @@ export default function useEvent(initialValues) {
         handleInputChange,
         handleSubmit,
         error,
+        setValues,
+        setIsFormValid,
     };
 }

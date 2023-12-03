@@ -59,6 +59,7 @@ export default function EventDetails() {
     const deleteMessage = 'Are you sure you want to delete this event?';
     const isOwner = userId === event.ownerId;
 
+    //  go to event handler
     async function goToEventHandler() {
         try {
             await eventsService.goToEvent(eventId, userId);
@@ -69,6 +70,7 @@ export default function EventDetails() {
         }
     }
 
+    // not go to event handler
     async function notGoToEventHandler() {
         try {
             await eventsService.notGoToEvent(eventId, userId);
@@ -79,6 +81,7 @@ export default function EventDetails() {
         }
     }
 
+    // delete event handler
     async function deleteEventHandler() {
         const hasConfirmed = popUpWindow(deleteMessage);
 
@@ -87,7 +90,6 @@ export default function EventDetails() {
                 await eventsService.deleteEvent(event.id);
                 navigate('/events');
             } catch (error) {
-                console.log(error);
                 setError(error);
             }
         }
@@ -149,6 +151,7 @@ export default function EventDetails() {
                     <p>{event.location}</p>
                 </div>
 
+                {/* action buttons */}
                 <div className="event-button">
                     {isGoing && userId && !isOwner && (
                         <a

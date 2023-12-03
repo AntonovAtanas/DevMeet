@@ -67,10 +67,20 @@ async function isUserGoing(eventId, userId) {
     return false;
 }
 
-// delte an event
+// edit an event
+
+async function editEvent(eventData) {
+    const { data, error } = await supabase
+        .from('Events')
+        .upsert(eventData)
+        .select();
+
+    return { data, error };
+}
+
+// delete an event
 async function deleteEvent(eventId) {
     const { error } = await supabase.from('Events').delete().eq('id', eventId);
-    console.log(error);
 }
 
 export default {
@@ -82,4 +92,5 @@ export default {
     isUserGoing,
     notGoToEvent,
     deleteEvent,
+    editEvent,
 };
