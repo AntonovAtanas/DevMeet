@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './allEvents.css';
+import styles from './AllEvents.module.css';
 
 import EventCard from '../../../shared/EventCard/EventCard';
 import eventsService from '../../../services/events-service';
@@ -24,7 +24,7 @@ export default function AllEvents() {
     }, []);
 
     return (
-        <div className="all-events-wrapper">
+        <div className={styles.allEventsWrapper}>
             {isLoading && <LoadingSpinner />}
             {!isLoading && allEvents.length < 1 && (
                 <p>There are no events yet</p>

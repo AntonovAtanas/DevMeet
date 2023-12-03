@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
-import './eventDetails.css';
+import styles from './EventDetails.module.css';
 
 import LoadingSpinner from '../../../shared/LoadingSpinner/LoadingSpinner';
 import eventsService from '../../../services/events-service';
@@ -49,7 +49,7 @@ export default function EventDetails() {
     // early return if not loaded event
     if (isLoading) {
         return (
-            <div className="event-container">
+            <div className={styles.eventContainer}>
                 <LoadingSpinner />
             </div>
         );
@@ -96,17 +96,17 @@ export default function EventDetails() {
     }
 
     return (
-        <div className="event-container">
-            <div className="event-image">
+        <div className={styles.eventContainer}>
+            <div className={styles.eventImage}>
                 <img src={event.imageUrl} alt={event.title} />
             </div>
 
-            <div className="event-details">
-                <div className="event-title">
+            <div className={styles.eventDetails}>
+                <div>
                     <h1 className="heading-main">{event.title}</h1>
                 </div>
 
-                <div className="event-date">
+                <div className={styles.eventDate}>
                     <i
                         className="fa-regular fa-calendar"
                         style={{ color: '#33A394' }}
@@ -116,12 +116,12 @@ export default function EventDetails() {
 
                 {/* show only if there are less than 10 tickets left */}
                 {event.capacity - goingPeople < 10 && (
-                    <div className="event-tickets-left">
+                    <div className={styles.eventTicketsLeft}>
                         <p>Only {event.capacity - event.going} tickets left!</p>
                     </div>
                 )}
 
-                <div className="event-ticket-price">
+                <div className={styles.eventTicketPrice}>
                     <i
                         className="fa-solid fa-ticket"
                         style={{ color: '#33A394' }}
@@ -133,7 +133,7 @@ export default function EventDetails() {
                     </p>
                 </div>
 
-                <div className="event-going">
+                <div className={styles.eventGoing}>
                     <i
                         className="fa-solid fa-check"
                         style={{ color: '#33A394' }}
@@ -141,21 +141,21 @@ export default function EventDetails() {
                     <p>{goingPeople} people going</p>
                 </div>
 
-                <div className="event-description">
-                    <h2 className="event-headings">Description</h2>
+                <div className={styles.eventDescription}>
+                    <h2 className={styles.eventHeadings}>Description</h2>
                     <p>{event.description}</p>
                 </div>
 
-                <div className="event-location">
-                    <h2 className="event-headings">Location</h2>
+                <div className={styles.eventLocation}>
+                    <h2 className={styles.eventHeadings}>Location</h2>
                     <p>{event.location}</p>
                 </div>
 
                 {/* action buttons */}
-                <div className="event-button">
+                <div className={styles.eventButton}>
                     {isGoing && userId && !isOwner && (
                         <a
-                            className="button-main button-action"
+                            className={`${styles.buttonAction} button-main`}
                             onClick={() => notGoToEventHandler()}
                         >
                             <i
@@ -167,7 +167,7 @@ export default function EventDetails() {
                     )}
                     {!isGoing && userId && !isOwner && (
                         <a
-                            className="button-main button-action"
+                            className={`${styles.buttonAction} button-main`}
                             onClick={() => goToEventHandler()}
                         >
                             <i
@@ -181,7 +181,7 @@ export default function EventDetails() {
                         <>
                             <Link
                                 to={'edit'}
-                                className="button-main button-action"
+                                className={`${styles.buttonAction} button-main`}
                             >
                                 <i
                                     className="fa-solid fa-pen-to-square"
@@ -190,7 +190,7 @@ export default function EventDetails() {
                                 Edit
                             </Link>
                             <a
-                                className="button-main button-action"
+                                className={`${styles.buttonAction} button-main`}
                                 onClick={() => deleteEventHandler()}
                             >
                                 <i

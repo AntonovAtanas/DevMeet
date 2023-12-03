@@ -1,4 +1,4 @@
-.event-container {
+.eventContainer {
     display: flex;
     flex-direction: column;
     gap: 1em;
@@ -6,14 +6,14 @@
     width: 60%;
 }
 
-.event-details {
+.eventDetails {
     display: flex;
     flex-direction: column;
     gap: 1em;
     padding: 0 1em;
 }
 
-.event-image img {
+.eventImage img {
     width: 100%;
     height: auto;
     display: block;
@@ -21,26 +21,27 @@
     border-radius: 8px;
 }
 
-.event-ticket-price,
-.event-going,
-.event-date {
+.eventTicketPrice,
+.eventGoing,
+.eventDate,
+.eventTicketsLeft {
     display: flex;
     align-items: center;
     gap: 0.5em;
 }
 
-.event-description .event-headings,
-.event-location .event-headings {
+.eventDescription .eventHeadings,
+.eventLocation .eventHeadings {
     margin-bottom: 0.5em;
 }
 
-.event-button {
+.eventButton {
     display: flex;
     gap: 2em;
     justify-content: center;
 }
 
-.button-action {
+.buttonAction {
     display: inline-flex;
     gap: 0.5em;
     /* margin: 0 auto; */

@@ -1,10 +1,6 @@
-.all-events-wrapper {
+.allEventsWrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
     row-gap: 3em;
     column-gap: 5em;
-}
-
-.all-events-wrapper .ldsRing {
-    margin: 0 auto;
 }
