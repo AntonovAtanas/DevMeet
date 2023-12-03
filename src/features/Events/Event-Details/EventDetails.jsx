@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import './eventDetails.css';
 
@@ -52,7 +52,9 @@ export default function EventDetails() {
             </div>
         );
     }
+
     const formattedDate = dateTransform(event.date);
+    const isOwner = userId === event.ownerId;
 
     async function goToEventHandler() {
         try {
@@ -131,9 +133,9 @@ export default function EventDetails() {
                 </div>
 
                 <div className="event-button">
-                    {isGoing && userId && (
+                    {isGoing && userId && !isOwner && (
                         <a
-                            className="button-main button-going"
+                            className="button-main button-action"
                             onClick={() => notGoToEventHandler()}
                         >
                             <i
@@ -143,9 +145,9 @@ export default function EventDetails() {
                             Not going
                         </a>
                     )}
-                    {!isGoing && userId && (
+                    {!isGoing && userId && !isOwner && (
                         <a
-                            className="button-main button-going"
+                            className="button-main button-action"
                             onClick={() => goToEventHandler()}
                         >
                             <i
@@ -154,6 +156,30 @@ export default function EventDetails() {
                             ></i>
                             Going
                         </a>
+                    )}
+                    {isOwner && (
+                        <>
+                            <Link
+                                to={'edit'}
+                                className="button-main button-action"
+                            >
+                                <i
+                                    className="fa-solid fa-pen-to-square"
+                                    style={{ color: '#fff' }}
+                                ></i>
+                                Edit
+                            </Link>
+                            <a
+                                className="button-main button-action"
+                                onClick={() => goToEventHandler()}
+                            >
+                                <i
+                                    className="fa-solid fa-trash"
+                                    style={{ color: '#fff' }}
+                                ></i>
+                                Delete
+                            </a>
+                        </>
                     )}
                 </div>
             </div>

@@ -32,11 +32,17 @@
 
 .event-button {
     display: flex;
+    gap: 2em;
+    justify-content: center;
 }
 
-.button-going {
+.button-action {
     display: inline-flex;
     gap: 0.5em;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     align-items: center;
+}
+
+.event-container .ldsRing {
+    margin: 0 auto;
 }
