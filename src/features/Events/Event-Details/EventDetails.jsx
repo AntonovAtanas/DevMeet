@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import './eventDetails.css';
 
@@ -7,6 +7,7 @@ import LoadingSpinner from '../../../shared/LoadingSpinner/LoadingSpinner';
 import eventsService from '../../../services/events-service';
 import dateTransform from '../../../shared/utils/date-transform';
 import AuthContext from '../../../contexts/authContext';
+import popUpWindow from '../../../shared/utils/pop-up-window';
 
 export default function EventDetails() {
     const [event, setEvent] = useState({});
@@ -17,6 +18,7 @@ export default function EventDetails() {
 
     const { userId } = useContext(AuthContext);
     const { eventId } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         // get event details
@@ -54,11 +56,12 @@ export default function EventDetails() {
     }
 
     const formattedDate = dateTransform(event.date);
+    const deleteMessage = 'Are you sure you want to delete this event?';
     const isOwner = userId === event.ownerId;
 
     async function goToEventHandler() {
         try {
-            const goingData = await eventsService.goToEvent(eventId, userId);
+            await eventsService.goToEvent(eventId, userId);
             setGoingPeople((goingPeople) => (goingPeople += 1));
             setIsGoind(true);
         } catch (error) {
@@ -73,6 +76,20 @@ export default function EventDetails() {
             setIsGoind(false);
         } catch (error) {
             setError(error);
+        }
+    }
+
+    async function deleteEventHandler() {
+        const hasConfirmed = popUpWindow(deleteMessage);
+
+        if (hasConfirmed) {
+            try {
+                await eventsService.deleteEvent(event.id);
+                navigate('/events');
+            } catch (error) {
+                console.log(error);
+                setError(error);
+            }
         }
     }
 
@@ -171,7 +188,7 @@ export default function EventDetails() {
                             </Link>
                             <a
                                 className="button-main button-action"
-                                onClick={() => goToEventHandler()}
+                                onClick={() => deleteEventHandler()}
                             >
                                 <i
                                     className="fa-solid fa-trash"

@@ -34,6 +34,15 @@ async function goToEvent(eventId, userId) {
     return data;
 }
 
+// not go to event
+async function notGoToEvent(eventId, userId) {
+    const { error } = await supabase
+        .from('eventLikes')
+        .delete()
+        .eq('eventId', eventId)
+        .eq('userId', userId);
+}
+
 // check how many people are going
 async function goingPeopleToEvent(eventId) {
     const { data, error } = await supabase
@@ -58,12 +67,10 @@ async function isUserGoing(eventId, userId) {
     return false;
 }
 
-async function notGoToEvent(eventId, userId) {
-    const { error } = await supabase
-        .from('eventLikes')
-        .delete()
-        .eq('eventId', eventId)
-        .eq('userId', userId);
+// delte an event
+async function deleteEvent(eventId) {
+    const { error } = await supabase.from('Events').delete().eq('id', eventId);
+    console.log(error);
 }
 
 export default {
@@ -74,4 +81,5 @@ export default {
     goingPeopleToEvent,
     isUserGoing,
     notGoToEvent,
+    deleteEvent,
 };
