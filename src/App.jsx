@@ -11,6 +11,7 @@ import Logout from './features/User/Logout/Logout';
 import { AuthProvider } from './contexts/authContext';
 import CreateEvent from './features/Events/Create-Event/CreateEvent';
 import EventDetails from './features/Events/Event-Details/EventDetails';
+import EditEvent from './features/Events/Edit-Event/EditEvent';
 
 function App() {
     return (
@@ -28,6 +29,10 @@ function App() {
                         <Route
                             path="/events/:eventId"
                             element={<EventDetails />}
+                        />
+                        <Route
+                            path="/events/:eventId/edit"
+                            element={<EditEvent />}
                         />
                         <Route path="/user/register" element={<Register />} />
                         <Route path="/user/login" element={<Login />} />
