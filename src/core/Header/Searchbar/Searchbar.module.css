@@ -1,4 +1,4 @@
-.search-bar {
+.searchBar {
     position: relative;
     display: flex;
     flex-grow: 1;
@@ -8,13 +8,15 @@
     max-width: 550px;
 }
 
-.search-button {
+.searchButton {
+    all: unset;
     position: absolute;
     top: 50%;
     right: 5%;
     transform: translateY(-50%);
+    cursor: pointer;
 }
 
-.search-bar .default-input {
+.searchBar input {
     padding-left: 3%;
 }

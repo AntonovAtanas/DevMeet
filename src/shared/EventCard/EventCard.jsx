@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import './eventCard.css';
+import styles from './EventCard.module.css';
 
 import dateTransform from '../utils/date-transform';
 import eventsService from '../../services/events-service';
@@ -21,9 +21,9 @@ export default function EventCard({ event }) {
     }, []);
 
     return (
-        <Link className="card-wrapper" to={`/events/${event.id}`}>
-            <div className="event-card">
-                <span className="card-image-wrapper">
+        <Link className={styles.cardWrapper} to={`/events/${event.id}`}>
+            <div className={styles.eventCard}>
+                <span className={styles.cardImageWrapper}>
                     <img src={event.imageUrl} alt={event.eventTitle} />
                 </span>
                 <h3>{event.title}</h3>
@@ -41,7 +41,7 @@ export default function EventCard({ event }) {
                     ></i>
                     <p>{formattedDate}</p>
                 </span>
-                <div className="going-price-wrapper">
+                <div className={styles.goingPriceWrapper}>
                     <span>
                         <i
                             className="fa-solid fa-check"

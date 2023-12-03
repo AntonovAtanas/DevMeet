@@ -5,20 +5,20 @@ header {
     justify-content: space-between;
 }
 
-.logo-search-wrapper {
+.logoSearchWrapper {
     display: flex;
     align-items: center;
     gap: 1em;
     flex: 1;
 }
 
-.logo-wrapper img {
+.logoWrapper img {
     display: block;
     height: auto;
     width: 198px;
 }
 
-.search-button {
+.searchButton {
     all: unset;
     cursor: pointer;
 }

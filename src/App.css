@@ -110,3 +110,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     text-align: center;
     text-decoration: underline;
 }
+
+/* error validation stylization */
+
+.error-message {
+    color: #ED1C24;
+}
+
+.error-input {
+    border-left: 4px solid #ED1C24;
+}

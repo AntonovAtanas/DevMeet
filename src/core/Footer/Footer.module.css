@@ -5,7 +5,7 @@
     background-color: #cfcfcf;
 }
 
-.footer-container {
+.footerContainer {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -13,27 +13,27 @@
     gap: 24px;
 }
 
-.footer-title {
+.footerTitle {
     color: #111111;
     font-size: 24px;
     margin-bottom: 0;
     margin-top: 18px;
 }
 
-.footer-sub-title {
+.footerSubTitle {
     color: #111111;
     font-size: 14px;
     margin: 0;
 }
 
-.social-media {
+.socialMedia {
     display: flex;
     justify-content: center;
     gap: 12px;
     margin-bottom: 30px;
 }
 
-.social-icon {
+.socialIcon {
     height: 18px;
     width: 18px;
     fill: #111111;

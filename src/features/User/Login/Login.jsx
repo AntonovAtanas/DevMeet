@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
 
-import './login.css';
-
 import { inputPatterns } from '../../../shared/input-validation-pattern/input-patterns';
 import useAuth from '../useAuth';
 

@@ -1,8 +1,8 @@
-import './loading-spinner.css';
+import styles from './LoadingSpinner.module.css';
 
 export default function LoadingSpinner() {
     return (
-        <div className="ldsRing">
+        <div className={styles.ldsRing}>
             <div></div>
             <div></div>
             <div></div>

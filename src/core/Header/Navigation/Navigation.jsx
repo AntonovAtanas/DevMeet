@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
-import './navigation.css';
+
+import styles from './Navigation.module.css';
 
 import AuthContext from '../../../contexts/authContext';
 
@@ -9,7 +10,7 @@ export default function Navigation() {
 
     return (
         <nav>
-            <ul className="navigation">
+            <ul className={styles.navigation}>
                 <li>
                     <Link to="/">Home</Link>
                 </li>
