@@ -1,10 +1,10 @@
-.upcoming-events {
+.upcomingEvents {
     display: flex;
     flex-direction: column;
     gap: 1em;
 }
 
-.upcoming-events-cards-wrapper {
+.upcomingEventsCardsWrapper {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;

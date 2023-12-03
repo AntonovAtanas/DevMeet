@@ -1,5 +1,5 @@
 import EventCard from '../../../shared/EventCard/EventCard';
-import './upcomingEvents.css';
+import styles from './UpcomingEvents.module.css';
 
 const tempDB = [
     {
@@ -61,9 +61,9 @@ const tempDB = [
 
 export default function UpcomingEvents() {
     return (
-        <div className="upcoming-events">
+        <div className={styles.upcomingEvents}>
             <h2 className="heading-main">Upcoming Events</h2>
-            <div className="upcoming-events-cards-wrapper">
+            <div className={styles.upcomingEventsCardsWrapper}>
                 {tempDB.map((event) => (
                     <EventCard event={event} key={event.id} />
                 ))}
