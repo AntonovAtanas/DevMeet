@@ -20,9 +20,14 @@ export default function Navigation() {
                     <Link to="/events/create">Add an Event</Link>
                 </li>
                 {userId ? (
-                    <li>
-                        <Link to="/user/logout">Logout</Link>
-                    </li>
+                    <>
+                        <li>
+                            <Link to="/user/profile">Profile</Link>
+                        </li>
+                        <li>
+                            <Link to="/user/logout">Logout</Link>
+                        </li>
+                    </>
                 ) : (
                     <>
                         <li>

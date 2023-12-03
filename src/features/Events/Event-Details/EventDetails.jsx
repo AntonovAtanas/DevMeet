@@ -31,7 +31,6 @@ export default function EventDetails() {
         eventsService
             .goingPeopleToEvent(eventId)
             .then(({ data }) => {
-                console.log(data.length);
                 setGoingPeople(data.length);
                 setIsLoading(false);
             })
