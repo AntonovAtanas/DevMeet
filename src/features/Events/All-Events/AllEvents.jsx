@@ -23,14 +23,17 @@ export default function AllEvents() {
     }, []);
 
     return (
-        <div className="allEventsWrapper">
-            {isLoading && <LoadingSpinner />}
-            {!isLoading && allEvents.length < 1 && (
-                <p>There are no events yet</p>
-            )}
-            {allEvents.map((event) => (
-                <EventCard event={event} key={event.id} />
-            ))}
-        </div>
+        <>
+            <h1 className="allEventsHeading">All events</h1>
+            <div className="allEventsWrapper">
+                {isLoading && <LoadingSpinner />}
+                {!isLoading && allEvents.length < 1 && (
+                    <p>There are no events yet</p>
+                )}
+                {allEvents.map((event) => (
+                    <EventCard event={event} key={event.id} />
+                ))}
+            </div>
+        </>
     );
 }

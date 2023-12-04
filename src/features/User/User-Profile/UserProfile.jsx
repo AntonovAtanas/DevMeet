@@ -25,16 +25,15 @@ export default function UserProfile() {
             .catch(({ error }) => setError(error));
     }, []);
 
-    if (!isLoaded) {
-        return <LoadingSpinner />;
-    }
     return (
         <div className={styles.profileContainer}>
-            <h1 className={styles.attendingEventsHeader}>Attending events</h1>
+            <h1 className="allEventsHeading">Attending events</h1>
             <div className="allEventsWrapper">
-                {goingEvents.map((event) => (
-                    <EventCard event={event} key={event.id} />
-                ))}
+                {!isLoaded && <LoadingSpinner />}
+                {isLoaded &&
+                    goingEvents.map((event) => (
+                        <EventCard event={event} key={event.id} />
+                    ))}
             </div>
         </div>
     );

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import useEvent from '../useEvent';
-import { useParams } from 'react-router-dom';
 import eventsService from '../../../services/events-service';
 import LoadingSpinner from '../../../shared/LoadingSpinner/LoadingSpinner';
 
