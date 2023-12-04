@@ -15,6 +15,17 @@ async function getAllEvents() {
     return { data, error };
 }
 
+// get upcoming 5 events
+async function getUpcomingFiveEvents() {
+    const { data, error } = await supabase
+        .from('Events')
+        .select('*')
+        .order('date', { ascending: true })
+        .limit(5);
+
+    return { data, error };
+}
+
 // get specific event
 async function getEvent(eventId) {
     const { data, error } = await supabase
@@ -68,7 +79,6 @@ async function isUserGoing(eventId, userId) {
 }
 
 // edit an event
-
 async function editEvent(eventData) {
     const { data, error } = await supabase
         .from('Events')
@@ -93,4 +103,5 @@ export default {
     notGoToEvent,
     deleteEvent,
     editEvent,
+    getUpcomingFiveEvents,
 };
