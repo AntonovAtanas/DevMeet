@@ -11,7 +11,10 @@ async function addEvent(newEvent) {
 
 // get all events
 async function getAllEvents() {
-    const { data, error } = await supabase.from('Events').select('*');
+    const { data, error } = await supabase
+        .from('Events')
+        .select('*')
+        .order('date', { ascending: true });
     return { data, error };
 }
 
@@ -39,7 +42,7 @@ async function getEvent(eventId) {
 // go to event
 async function goToEvent(eventId, userId) {
     const { data, error } = await supabase
-        .from('eventLikes')
+        .from('eventGoing')
         .insert([{ eventId, userId }])
         .select();
     return data;
@@ -48,7 +51,7 @@ async function goToEvent(eventId, userId) {
 // not go to event
 async function notGoToEvent(eventId, userId) {
     const { error } = await supabase
-        .from('eventLikes')
+        .from('eventGoing')
         .delete()
         .eq('eventId', eventId)
         .eq('userId', userId);
@@ -57,18 +60,42 @@ async function notGoToEvent(eventId, userId) {
 // check how many people are going
 async function goingPeopleToEvent(eventId) {
     const { data, error } = await supabase
-        .from('eventLikes')
+        .from('eventGoing')
         .select('*')
         .eq('eventId', eventId);
 
     return { data, error };
 }
 
+// check user events which he will go to
+async function userGoingEvents(userId) {
+    const { data, error } = await supabase
+        .from('eventGoing')
+        .select('eventId')
+        .eq('userId', userId);
+
+    const eventIds = data.map((events) => events.eventId);
+
+    const events = await populatedUserGoingEvents(eventIds);
+
+    return { events };
+}
+
+// populate the user events which he will go
+async function populatedUserGoingEvents(eventIds) {
+    const { data } = await supabase
+        .from('Events')
+        .select('*')
+        .in('id', eventIds);
+
+    return { data };
+}
+
 // check if user is confirmed as going
 async function isUserGoing(eventId, userId) {
     if (userId) {
         const { data, error } = await supabase
-            .from('eventLikes')
+            .from('eventGoing')
             .select('*')
             .eq('eventId', eventId)
             .eq('userId', userId);
@@ -104,4 +131,5 @@ export default {
     deleteEvent,
     editEvent,
     getUpcomingFiveEvents,
+    userGoingEvents,
 };
