@@ -16,6 +16,7 @@ import EditEvent from './features/Events/Edit-Event/EditEvent';
 import AuthGuard from './shared/guards/AuthGuard';
 import GuestGuard from './shared/guards/GuestGuard';
 import PageNotFound from './shared/error-components/PageNotFound';
+import UserProfile from './features/User/User-Profile/UserProfile';
 
 function App() {
     return (
@@ -47,6 +48,10 @@ function App() {
                             <Route
                                 path="/events/:eventId/edit"
                                 element={<EditEvent />}
+                            />
+                            <Route
+                                path="/user/profile"
+                                element={<UserProfile />}
                             />
                             <Route path="/user/logout" element={<Logout />} />
                             {/* add profile page */}

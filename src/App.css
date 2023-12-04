@@ -113,6 +113,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     text-decoration: underline;
 }
 
+/* all events wrapper */
+
+.allEventsWrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    row-gap: 3em;
+    column-gap: 5em;
+}
+
 /* error validation stylization */
 
 .error-message {
