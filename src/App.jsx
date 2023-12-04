@@ -12,6 +12,7 @@ import { AuthProvider } from './contexts/authContext';
 import CreateEvent from './features/Events/Create-Event/CreateEvent';
 import EventDetails from './features/Events/Event-Details/EventDetails';
 import EditEvent from './features/Events/Edit-Event/EditEvent';
+import AuthGuard from './shared/guards/AuthGuard';
 
 function App() {
     return (
@@ -23,20 +24,24 @@ function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/events" element={<AllEvents />} />
                         <Route
-                            path="/events/create"
-                            element={<CreateEvent />}
-                        />
-                        <Route
                             path="/events/:eventId"
                             element={<EventDetails />}
                         />
-                        <Route
-                            path="/events/:eventId/edit"
-                            element={<EditEvent />}
-                        />
                         <Route path="/user/register" element={<Register />} />
                         <Route path="/user/login" element={<Login />} />
-                        <Route path="/user/logout" element={<Logout />} />
+                        <Route element={<AuthGuard />}>
+                            <Route
+                                path="/events/create"
+                                element={<CreateEvent />}
+                            />
+                            <Route
+                                path="/events/:eventId/edit"
+                                element={<EditEvent />}
+                            />
+                            <Route path="/user/logout" element={<Logout />} />
+
+                            {/* add profile page */}
+                        </Route>
                     </Routes>
                 </main>
                 <Footer />

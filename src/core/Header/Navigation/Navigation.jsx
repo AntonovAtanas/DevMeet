@@ -17,11 +17,12 @@ export default function Navigation() {
                 <li>
                     <Link to="/events">All Events</Link>
                 </li>
-                <li>
-                    <Link to="/events/create">Add an Event</Link>
-                </li>
+
                 {userId ? (
                     <>
+                        <li>
+                            <Link to="/events/create">Add an Event</Link>
+                        </li>
                         <li>
                             <Link to="/user/profile">Profile</Link>
                         </li>
