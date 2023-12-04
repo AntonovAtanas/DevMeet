@@ -13,6 +13,7 @@ import CreateEvent from './features/Events/Create-Event/CreateEvent';
 import EventDetails from './features/Events/Event-Details/EventDetails';
 import EditEvent from './features/Events/Edit-Event/EditEvent';
 import AuthGuard from './shared/guards/AuthGuard';
+import GuestGuard from './shared/guards/GuestGuard';
 
 function App() {
     return (
@@ -27,8 +28,15 @@ function App() {
                             path="/events/:eventId"
                             element={<EventDetails />}
                         />
-                        <Route path="/user/register" element={<Register />} />
-                        <Route path="/user/login" element={<Login />} />
+
+                        <Route element={<GuestGuard />}>
+                            <Route
+                                path="/user/register"
+                                element={<Register />}
+                            />
+                            <Route path="/user/login" element={<Login />} />
+                        </Route>
+
                         <Route element={<AuthGuard />}>
                             <Route
                                 path="/events/create"
@@ -39,7 +47,6 @@ function App() {
                                 element={<EditEvent />}
                             />
                             <Route path="/user/logout" element={<Logout />} />
-
                             {/* add profile page */}
                         </Route>
                     </Routes>
