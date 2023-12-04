@@ -1,0 +1,25 @@
+.mainbox {
+    /* top: 50%;
+    position: relative; */
+    margin: auto;
+}
+
+.err {
+    color: #33A394;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 4em;
+    text-align: center;
+}
+
+.msg {
+    display: flex;
+    justify-content: center;
+    font-size: 1.6rem;
+}
+
+.fallbackReset {
+    display: inline;
+    text-decoration: none;
+    color: #33A394;
+    cursor: pointer;
+}

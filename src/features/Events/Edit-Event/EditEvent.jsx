@@ -242,7 +242,7 @@ export default function EditEvent() {
                 </div>
                 {!isFormValid.description && isInputBlurred.description && (
                     <span className="error-message">
-                        The description must be between 20 and 500 characters!
+                        The description must be between 20 and 1500 characters!
                     </span>
                 )}
 

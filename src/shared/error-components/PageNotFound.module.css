@@ -1,0 +1,16 @@
+.err {
+    color: #33A394;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 11rem;
+    text-align: center;
+}
+
+.msg {
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+a {
+    text-decoration: none;
+    color: #33A394;
+}
