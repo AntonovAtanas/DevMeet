@@ -17,51 +17,59 @@ import AuthGuard from './shared/guards/AuthGuard';
 import GuestGuard from './shared/guards/GuestGuard';
 import PageNotFound from './shared/error-components/PageNotFound';
 import UserProfile from './features/User/User-Profile/UserProfile';
+import { SearchProvider } from './contexts/searchContext';
+import SearchResults from './features/Events/Search-Results/SearchResults';
 
 function App() {
     return (
         <div className="container">
             <AuthProvider>
-                <Header />
-                <main>
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/events" element={<AllEvents />} />
-                        <Route
-                            path="/events/:eventId"
-                            element={<EventDetails />}
-                        />
+                <SearchProvider>
+                    <Header />
+                    <main>
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/search" element={<SearchResults />} />
+                            <Route path="/events" element={<AllEvents />} />
+                            <Route
+                                path="/events/:eventId"
+                                element={<EventDetails />}
+                            />
 
-                        <Route element={<GuestGuard />}>
-                            <Route
-                                path="/user/register"
-                                element={<Register />}
-                            />
-                            <Route path="/user/login" element={<Login />} />
-                        </Route>
+                            <Route element={<GuestGuard />}>
+                                <Route
+                                    path="/user/register"
+                                    element={<Register />}
+                                />
+                                <Route path="/user/login" element={<Login />} />
+                            </Route>
 
-                        <Route element={<AuthGuard />}>
-                            <Route
-                                path="/events/create"
-                                element={<CreateEvent />}
-                            />
-                            <Route
-                                path="/events/:eventId/edit"
-                                element={<EditEvent />}
-                            />
-                            <Route
-                                path="/user/profile"
-                                element={<UserProfile />}
-                            />
-                            <Route path="/user/logout" element={<Logout />} />
-                            {/* add profile page */}
-                        </Route>
-                        <Route path="*" element={<PageNotFound />} />
-                    </Routes>
-                </main>
-                <footer>
-                    <Footer />
-                </footer>
+                            <Route element={<AuthGuard />}>
+                                <Route
+                                    path="/events/create"
+                                    element={<CreateEvent />}
+                                />
+                                <Route
+                                    path="/events/:eventId/edit"
+                                    element={<EditEvent />}
+                                />
+                                <Route
+                                    path="/user/profile"
+                                    element={<UserProfile />}
+                                />
+                                <Route
+                                    path="/user/logout"
+                                    element={<Logout />}
+                                />
+                                {/* add profile page */}
+                            </Route>
+                            <Route path="*" element={<PageNotFound />} />
+                        </Routes>
+                    </main>
+                    <footer>
+                        <Footer />
+                    </footer>
+                </SearchProvider>
             </AuthProvider>
         </div>
     );
