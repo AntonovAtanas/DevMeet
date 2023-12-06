@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import styles from './ResultsContainer.module.css';
 
@@ -11,7 +12,10 @@ export default function SearchResults() {
     const [searchResults, setSearchResults] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(null);
-    const { searchTerm } = useContext(SearchContext);
+    const { searchTerm, setSearchTerm } = useContext(SearchContext);
+
+    // const history = useHistory();
+    const location = useLocation();
 
     useEffect(() => {
         eventsService
@@ -22,6 +26,13 @@ export default function SearchResults() {
             })
             .catch((error) => setError(error.message));
     }, [searchTerm]);
+
+    // cleanup the search bar when the user navigates outside the search page
+    useEffect(() => {
+        return () => {
+            setSearchTerm('');
+        };
+    }, [location.pathname]);
 
     if (!isLoaded) {
         return (

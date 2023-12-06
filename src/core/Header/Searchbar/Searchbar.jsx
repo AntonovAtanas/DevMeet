@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Searchbar() {
     const navigate = useNavigate();
-    const { setSearchTerm } = useContext(SearchContext);
+    const { searchTerm, setSearchTerm } = useContext(SearchContext);
 
     function setSearchTermInContext(e) {
         const searchTerm = e.target.value;
@@ -18,16 +18,14 @@ export default function Searchbar() {
     }
 
     return (
-        <form
-            className={styles.searchBar}
-            onSubmit={onSearchHandler}
-            onChange={setSearchTermInContext}
-        >
+        <form className={styles.searchBar} onSubmit={onSearchHandler}>
             <input
                 className="default-input"
                 type="search"
                 placeholder="Search event"
                 name="search"
+                value={searchTerm}
+                onChange={setSearchTermInContext}
             />
             <button className={styles.searchButton} type="submit">
                 <i
