@@ -39,6 +39,27 @@ async function getEvent(eventId) {
     return { data, error };
 }
 
+// search for event
+async function searchEvent(searchTerm) {
+    if (searchTerm == '') {
+        return getAllEvents();
+    }
+
+    // the search term needs to be formatted because of supabase multi words search
+    const formattedSearchTerm = searchTerm
+        .split(/\s+/) // Use a regular expression to split on whitespace
+        .filter((word) => word.trim() !== '') // Remove empty words
+        .map((word) => `'${word}'`)
+        .join(' & ');
+
+    let { data, error } = await supabase
+        .from('Events')
+        .select()
+        .textSearch('title', formattedSearchTerm);
+
+    return { data };
+}
+
 // go to event
 async function goToEvent(eventId, userId) {
     const { data, error } = await supabase
@@ -132,4 +153,5 @@ export default {
     editEvent,
     getUpcomingFiveEvents,
     userGoingEvents,
+    searchEvent,
 };
