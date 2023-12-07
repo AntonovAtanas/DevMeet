@@ -32,9 +32,10 @@ export default function EventDetails() {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [isGoing, setIsGoind] = useState(false);
+    const [isInfoWindowOpen, setIsInfoWindowOpen] = useState(false);
 
     // load google maps
-    const { isLoaded, loadError } = useJsApiLoader({
+    const { isLoaded } = useJsApiLoader({
         id: "google-map-script",
         googleMapsApiKey: REACT_GOOGLE_MAPS_API_KEY,
     });
@@ -118,6 +119,11 @@ export default function EventDetails() {
         }
     }
 
+    const handleMarkerClick = () => {
+        setIsInfoWindowOpen(!isInfoWindowOpen);
+    };
+
+    // set coordinates when Google Maps and Event data are loaded
     if (isLoaded && !coordinates && event.location) {
         geocodeLocations(event.location).then((coordinates) =>
             setCoordinates(coordinates)
@@ -185,7 +191,26 @@ export default function EventDetails() {
                                 center={coordinates}
                                 zoom={16}
                             >
-                                <MarkerF position={coordinates} />
+                                <MarkerF
+                                    position={coordinates}
+                                    animation={google.maps.Animation.DROP}
+                                    onClick={handleMarkerClick}
+                                />
+                                {isInfoWindowOpen && (
+                                    <InfoWindowF
+                                        position={coordinates}
+                                        onCloseClick={() =>
+                                            setIsInfoWindowOpen(false)
+                                        }
+                                    >
+                                        {/* Content inside the info window */}
+                                        <div>
+                                            <h3>{event.title}</h3>
+                                            <p>{formattedDate}</p>
+                                            <p>{event.location}</p>
+                                        </div>
+                                    </InfoWindowF>
+                                )}
                             </GoogleMap>
                         )}
                     </div>
