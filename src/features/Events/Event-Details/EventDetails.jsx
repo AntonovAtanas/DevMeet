@@ -1,20 +1,43 @@
-import { useContext, useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useContext, useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
-import styles from './EventDetails.module.css';
+import {
+    GoogleMap,
+    useJsApiLoader,
+    MarkerF,
+    InfoWindowF,
+} from "@react-google-maps/api";
 
-import LoadingSpinner from '../../../shared/LoadingSpinner/LoadingSpinner';
-import eventsService from '../../../services/events-service';
-import dateTransform from '../../../shared/utils/date-transform';
-import AuthContext from '../../../contexts/authContext';
-import popUpWindow from '../../../shared/utils/pop-up-window';
+import styles from "./EventDetails.module.css";
+
+import { REACT_GOOGLE_MAPS_API_KEY } from "../../../shared/environments/google-maps";
+import LoadingSpinner from "../../../shared/LoadingSpinner/LoadingSpinner";
+import eventsService from "../../../services/events-service";
+import dateTransform from "../../../shared/utils/date-transform";
+import AuthContext from "../../../contexts/authContext";
+import popUpWindow from "../../../shared/utils/pop-up-window";
+import geocodeLocations from "../../../shared/utils/geocode";
+
+const mapContainerStyle = {
+    width: "100%",
+    padding: "0 1em",
+    height: "300px",
+    margin: "1em 0",
+};
 
 export default function EventDetails() {
     const [event, setEvent] = useState({});
     const [goingPeople, setGoingPeople] = useState(0);
+    const [coordinates, setCoordinates] = useState(null);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [isGoing, setIsGoind] = useState(false);
+
+    // load google maps
+    const { isLoaded, loadError } = useJsApiLoader({
+        id: "google-map-script",
+        googleMapsApiKey: REACT_GOOGLE_MAPS_API_KEY,
+    });
 
     const { userId } = useContext(AuthContext);
     const { eventId } = useParams();
@@ -56,7 +79,7 @@ export default function EventDetails() {
     }
 
     const formattedDate = dateTransform(event.date);
-    const deleteMessage = 'Are you sure you want to delete this event?';
+    const deleteMessage = "Are you sure you want to delete this event?";
     const isOwner = userId === event.ownerId;
 
     //  go to event handler
@@ -88,11 +111,17 @@ export default function EventDetails() {
         if (hasConfirmed) {
             try {
                 await eventsService.deleteEvent(event.id);
-                navigate('/events');
+                navigate("/events");
             } catch (error) {
                 setError(error);
             }
         }
+    }
+
+    if (isLoaded && !coordinates && event.location) {
+        geocodeLocations(event.location).then((coordinates) =>
+            setCoordinates(coordinates)
+        );
     }
 
     return (
@@ -109,7 +138,7 @@ export default function EventDetails() {
                 <div className={styles.eventDate}>
                     <i
                         className="fa-regular fa-calendar"
-                        style={{ color: '#33A394' }}
+                        style={{ color: "#33A394" }}
                     ></i>
                     <p>{formattedDate}</p>
                 </div>
@@ -124,11 +153,11 @@ export default function EventDetails() {
                 <div className={styles.eventTicketPrice}>
                     <i
                         className="fa-solid fa-ticket"
-                        style={{ color: '#33A394' }}
+                        style={{ color: "#33A394" }}
                     ></i>
                     <p>
                         {event.ticketPrice == 0
-                            ? 'FREE'
+                            ? "FREE"
                             : `${event.ticketPrice} BGN`}
                     </p>
                 </div>
@@ -136,7 +165,7 @@ export default function EventDetails() {
                 <div className={styles.eventGoing}>
                     <i
                         className="fa-solid fa-check"
-                        style={{ color: '#33A394' }}
+                        style={{ color: "#33A394" }}
                     ></i>
                     <p>{goingPeople} people going</p>
                 </div>
@@ -149,6 +178,17 @@ export default function EventDetails() {
                 <div className={styles.eventLocation}>
                     <h2 className={styles.eventHeadings}>Location</h2>
                     <p>{event.location}</p>
+                    <div>
+                        {isLoaded && (
+                            <GoogleMap
+                                mapContainerStyle={mapContainerStyle}
+                                center={coordinates}
+                                zoom={16}
+                            >
+                                <MarkerF position={coordinates} />
+                            </GoogleMap>
+                        )}
+                    </div>
                 </div>
 
                 {/* action buttons */}
@@ -160,7 +200,7 @@ export default function EventDetails() {
                         >
                             <i
                                 className="fa-solid fa-x"
-                                style={{ color: '#fff' }}
+                                style={{ color: "#fff" }}
                             ></i>
                             Not going
                         </a>
@@ -172,7 +212,7 @@ export default function EventDetails() {
                         >
                             <i
                                 className="fa-solid fa-check"
-                                style={{ color: '#fff' }}
+                                style={{ color: "#fff" }}
                             ></i>
                             Going
                         </a>
@@ -180,12 +220,12 @@ export default function EventDetails() {
                     {isOwner && (
                         <>
                             <Link
-                                to={'edit'}
+                                to={"edit"}
                                 className={`${styles.buttonAction} button-main`}
                             >
                                 <i
                                     className="fa-solid fa-pen-to-square"
-                                    style={{ color: '#fff' }}
+                                    style={{ color: "#fff" }}
                                 ></i>
                                 Edit
                             </Link>
@@ -195,7 +235,7 @@ export default function EventDetails() {
                             >
                                 <i
                                     className="fa-solid fa-trash"
-                                    style={{ color: '#fff' }}
+                                    style={{ color: "#fff" }}
                                 ></i>
                                 Delete
                             </a>
