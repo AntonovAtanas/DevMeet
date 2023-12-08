@@ -136,3 +136,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .error-input {
     border-left: 4px solid #ed1c24;
 }
+
+@media (max-width: 435px) {
+    .add-event-wrapper {
+        width: 100%;
+    }
+}
