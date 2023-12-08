@@ -12,7 +12,7 @@ export default function Header() {
                 <div className={styles.logoWrapper}>
                     <Link to="/">
                         <img
-                            src="./src/assets/devMeet-logo.png"
+                            src="src/assets/devMeet-logo.png"
                             alt="devmeet-logo"
                         />
                     </Link>
