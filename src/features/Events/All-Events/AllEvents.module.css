@@ -1,9 +1,3 @@
-@media (max-width: 602px) {
-    .allEventsWrapperMedia {
-        /* column-gap: 2em; */
-    }
-}
-
 @media (max-width: 532px) {
     .allEventsWrapperMedia a {
         margin: 0 auto;
