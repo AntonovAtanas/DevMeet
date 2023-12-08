@@ -37,7 +37,7 @@ export default function EventDetails() {
     // load google maps
     const { isLoaded } = useJsApiLoader({
         id: "google-map-script",
-        googleMapsApiKey: REACT_GOOGLE_MAPS_API_KEY,
+        googleMapsApiKey: REACT_APP_GOOGLE_MAPS_API_KEY,
     });
 
     const { userId } = useContext(AuthContext);
