@@ -28,3 +28,25 @@
     object-fit: cover;
     border-radius: 8px;
 }
+
+@media (max-width: 850px) {
+    .heroWrapper {
+        gap: 1em;
+    }
+}
+
+@media (max-width: 660px) {
+    .heroWrapper {
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .heroContent h1,
+    .heroContent p {
+        text-align: center;
+    }
+
+    .buttonHero {
+        align-self: center;
+    }
+}
