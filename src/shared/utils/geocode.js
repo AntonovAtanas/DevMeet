@@ -5,7 +5,7 @@ export default async function geocodeLocations(location) {
         const response = await fetch(
             `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
                 location
-            )}&key=${process.env.REACT_GOOGLE_MAPS_API_KEY}`
+            )}&key=${REACT_GOOGLE_MAPS_API_KEY}`
         );
 
         if (!response.ok) {
