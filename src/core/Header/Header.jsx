@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import styles from './Header.module.css';
+import styles from "./Header.module.css";
 
-import Navigation from './Navigation/Navigation';
-import Searchbar from './Searchbar/Searchbar';
+import Navigation from "./Navigation/Navigation";
+import Searchbar from "./Searchbar/Searchbar";
 
 export default function Header() {
     return (
@@ -12,7 +12,7 @@ export default function Header() {
                 <div className={styles.logoWrapper}>
                     <Link to="/">
                         <img
-                            src="/src/assets/devMeet-logo.png"
+                            src="./src/assets/devMeet-logo.png"
                             alt="devmeet-logo"
                         />
                     </Link>
