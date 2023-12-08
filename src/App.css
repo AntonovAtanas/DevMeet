@@ -144,7 +144,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 @media (max-width: 435px) {
-    .add-event-wrapper {
+    .add-event-wrapper,
+    .auth-form {
         width: 100%;
     }
 }

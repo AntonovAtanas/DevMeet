@@ -56,3 +56,21 @@
     height: 200px;
     width: 200px;
 }
+
+@media (max-width: 1000px) {
+    .eventContainer {
+        width: 70%;
+    }
+}
+
+@media (max-width: 660px) {
+    .eventContainer {
+        width: 80%;
+    }
+}
+
+@media (max-width: 500px) {
+    .eventContainer {
+        width: 90%;
+    }
+}
