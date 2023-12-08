@@ -39,7 +39,37 @@ DevMeet was designed with the goal of connecting IT enthusiasts with their prefe
      - Ticket price alert: Conditinally will render a message when there are less than 10 tickets left.
      - Edit event: The owner of the event can edit the event he created.
      - Delete event: Only the owner of the event can delete it.
-- **Add Event**: Only logged in users can add an event. The add movie form requires the user to provide title, date, image url, address, ticket price and hall capacity.
+- **Add Event**: Only logged in users can add an event. The add event form requires the user to provide title, date, image url, address, ticket price and hall capacity.
 - **User Profile**: Accessible only for logged in users. The user profile page will render the events which they have confirmed to attend.
        
 # App architecture
+
+# App screenshots
+
+# Home     
+![image](https://github.com/AntonovAtanas/DevMeet/assets/114076833/3f3402c6-fc23-4eb1-a64e-dae4cec094d1)
+![image](https://github.com/AntonovAtanas/DevMeet/assets/114076833/c4eb43f9-727a-4988-b35b-a63e47df28bc)
+
+# All Events
+![image](https://github.com/AntonovAtanas/DevMeet/assets/114076833/664612b9-39f8-4954-a726-3c5da6140af3)
+
+# Event Details
+![image](https://github.com/AntonovAtanas/DevMeet/assets/114076833/42eab84c-60a0-4a80-aeb9-dd6827020718)
+![image](https://github.com/AntonovAtanas/DevMeet/assets/114076833/1ba53c78-2747-4e71-8c54-83d85492cc88)
+![image](https://github.com/AntonovAtanas/DevMeet/assets/114076833/87768f2d-a385-4b69-91d4-5ae27c080493)
+
+# Edit Event
+![image](https://github.com/AntonovAtanas/DevMeet/assets/114076833/b70405f3-5696-45c7-b940-a6f58e920a5f)
+
+# User Profile
+![image](https://github.com/AntonovAtanas/DevMeet/assets/114076833/98a8e9cd-9add-4e62-8991-614f892d26ed)
+
+# Login Page
+![image](https://github.com/AntonovAtanas/DevMeet/assets/114076833/212b3577-cfe2-4cab-b38f-9bd8c544bf9a)
+
+# Register Page
+![image](https://github.com/AntonovAtanas/DevMeet/assets/114076833/e2dd99f2-8692-4177-8d15-50d1d59a4389)
+
+# Search Page
+![image](https://github.com/AntonovAtanas/DevMeet/assets/114076833/ad9c42bd-fb31-422d-846e-ee7ba07cdb40)
+
