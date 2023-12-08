@@ -28,13 +28,25 @@ export default function UserProfile() {
     return (
         <div className={styles.profileContainer}>
             <h1 className="allEventsHeading">Attending events</h1>
+
+            {/* loading spinner */}
             {!isLoaded && (
                 <div style={{ display: "flex" }}>
                     <LoadingSpinner />{" "}
                 </div>
             )}
+
+            {/* message if user is not attending to any event */}
+            {isLoaded && goingEvents.length == 0 && (
+                <p className="info-message">
+                    You are not attending to any event!
+                </p>
+            )}
+
+            {/* render all events which user is attending */}
             <div className="allEventsWrapper allEventsWrapperMedia">
                 {isLoaded &&
+                    goingEvents.length > 0 &&
                     goingEvents.map((event) => (
                         <EventCard event={event} key={event.id} />
                     ))}

@@ -118,6 +118,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin: 0 auto;
 }
 
+/* info message */
+
+.info-message {
+    text-align: center;
+    font-size: 1.6rem;
+}
+
 /* all events wrapper */
 
 .allEventsHeading {
