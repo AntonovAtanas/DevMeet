@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import styles from './UpcomingEvents.module.css';
+import styles from "./UpcomingEvents.module.css";
 
-import EventCard from '../../../shared/EventCard/EventCard';
-import LoadingSpinner from '../../../shared/LoadingSpinner/LoadingSpinner';
-import eventsService from '../../../services/events-service';
+import EventCard from "../../../shared/EventCard/EventCard";
+import LoadingSpinner from "../../../shared/LoadingSpinner/LoadingSpinner";
+import eventsService from "../../../services/events-service";
 
 export default function UpcomingEvents() {
     const [upcomingEvents, setUpcomingEvents] = useState([]);

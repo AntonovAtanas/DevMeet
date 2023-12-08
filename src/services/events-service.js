@@ -1,9 +1,9 @@
-import supabase from './supabase';
+import supabase from "./supabase";
 
 // add an event
 async function addEvent(newEvent) {
     const { data, error } = await supabase
-        .from('Events')
+        .from("Events")
         .insert([newEvent])
         .select();
     return { data, error };
@@ -12,18 +12,18 @@ async function addEvent(newEvent) {
 // get all events
 async function getAllEvents() {
     const { data, error } = await supabase
-        .from('Events')
-        .select('*')
-        .order('date', { ascending: true });
+        .from("Events")
+        .select("*")
+        .order("date", { ascending: true });
     return { data, error };
 }
 
 // get upcoming 5 events
 async function getUpcomingFiveEvents() {
     const { data, error } = await supabase
-        .from('Events')
-        .select('*')
-        .order('date', { ascending: true })
+        .from("Events")
+        .select("*")
+        .order("date", { ascending: true })
         .limit(5);
 
     return { data, error };
@@ -32,30 +32,30 @@ async function getUpcomingFiveEvents() {
 // get specific event
 async function getEvent(eventId) {
     const { data, error } = await supabase
-        .from('Events')
+        .from("Events")
         .select()
-        .eq('id', eventId);
+        .eq("id", eventId);
 
     return { data, error };
 }
 
 // search for event
 async function searchEvent(searchTerm) {
-    if (searchTerm == '') {
+    if (searchTerm == "") {
         return getAllEvents();
     }
 
     // the search term needs to be formatted because of supabase multi words search
     const formattedSearchTerm = searchTerm
         .split(/\s+/) // Use a regular expression to split on whitespace
-        .filter((word) => word.trim() !== '') // Remove empty words
+        .filter((word) => word.trim() !== "") // Remove empty words
         .map((word) => `'${word}'`)
-        .join(' & ');
+        .join(" & ");
 
     let { data, error } = await supabase
-        .from('Events')
+        .from("Events")
         .select()
-        .textSearch('title', formattedSearchTerm);
+        .textSearch("title", formattedSearchTerm);
 
     return { data };
 }
@@ -63,7 +63,7 @@ async function searchEvent(searchTerm) {
 // go to event
 async function goToEvent(eventId, userId) {
     const { data, error } = await supabase
-        .from('eventGoing')
+        .from("eventGoing")
         .insert([{ eventId, userId }])
         .select();
     return data;
@@ -72,18 +72,18 @@ async function goToEvent(eventId, userId) {
 // not go to event
 async function notGoToEvent(eventId, userId) {
     const { error } = await supabase
-        .from('eventGoing')
+        .from("eventGoing")
         .delete()
-        .eq('eventId', eventId)
-        .eq('userId', userId);
+        .eq("eventId", eventId)
+        .eq("userId", userId);
 }
 
 // check how many people are going
 async function goingPeopleToEvent(eventId) {
     const { data, error } = await supabase
-        .from('eventGoing')
-        .select('*')
-        .eq('eventId', eventId);
+        .from("eventGoing")
+        .select("*")
+        .eq("eventId", eventId);
 
     return { data, error };
 }
@@ -91,9 +91,9 @@ async function goingPeopleToEvent(eventId) {
 // check user events which he will go to
 async function userGoingEvents(userId) {
     const { data, error } = await supabase
-        .from('eventGoing')
-        .select('eventId')
-        .eq('userId', userId);
+        .from("eventGoing")
+        .select("eventId")
+        .eq("userId", userId);
 
     const eventIds = data.map((events) => events.eventId);
 
@@ -105,9 +105,9 @@ async function userGoingEvents(userId) {
 // populate the user events which he will go
 async function populatedUserGoingEvents(eventIds) {
     const { data } = await supabase
-        .from('Events')
-        .select('*')
-        .in('id', eventIds);
+        .from("Events")
+        .select("*")
+        .in("id", eventIds);
 
     return { data };
 }
@@ -116,10 +116,10 @@ async function populatedUserGoingEvents(eventIds) {
 async function isUserGoing(eventId, userId) {
     if (userId) {
         const { data, error } = await supabase
-            .from('eventGoing')
-            .select('*')
-            .eq('eventId', eventId)
-            .eq('userId', userId);
+            .from("eventGoing")
+            .select("*")
+            .eq("eventId", eventId)
+            .eq("userId", userId);
 
         return { data, error };
     }
@@ -129,7 +129,7 @@ async function isUserGoing(eventId, userId) {
 // edit an event
 async function editEvent(eventData) {
     const { data, error } = await supabase
-        .from('Events')
+        .from("Events")
         .upsert(eventData)
         .select();
 
@@ -138,7 +138,7 @@ async function editEvent(eventData) {
 
 // delete an event
 async function deleteEvent(eventId) {
-    const { error } = await supabase.from('Events').delete().eq('id', eventId);
+    const { error } = await supabase.from("Events").delete().eq("id", eventId);
 }
 
 export default {
