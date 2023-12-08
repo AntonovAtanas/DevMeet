@@ -137,6 +137,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-left: 4px solid #ed1c24;
 }
 
+@media (max-width: 532px) {
+    .allEventsWrapperMedia a {
+        margin: 0 auto;
+    }
+}
+
 @media (max-width: 435px) {
     .add-event-wrapper {
         width: 100%;

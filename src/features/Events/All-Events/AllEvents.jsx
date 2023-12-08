@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-import styles from "./AllEvents.module.css";
-
 import EventCard from "../../../shared/EventCard/EventCard";
 import eventsService from "../../../services/events-service";
 import LoadingSpinner from "../../../shared/LoadingSpinner/LoadingSpinner";
@@ -27,17 +25,13 @@ export default function AllEvents() {
     return (
         <>
             <h1 className="allEventsHeading">All events</h1>
-            <div className={`${styles.allEventsWrapperMedia} allEventsWrapper`}>
+            <div className="allEventsWrapper allEventsWrapperMedia">
                 {isLoading && <LoadingSpinner />}
                 {!isLoading && allEvents.length < 1 && (
                     <p>There are no events yet</p>
                 )}
                 {allEvents.map((event) => (
-                    <EventCard
-                        event={event}
-                        key={event.id}
-                        className={styles.allEventsCardWrapper}
-                    />
+                    <EventCard event={event} key={event.id} />
                 ))}
             </div>
         </>

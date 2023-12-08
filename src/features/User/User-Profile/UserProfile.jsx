@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from "react";
 
-import styles from './UserProfile.module.css';
+import styles from "./UserProfile.module.css";
 
-import AuthContext from '../../../contexts/authContext';
-import eventsService from '../../../services/events-service';
+import AuthContext from "../../../contexts/authContext";
+import eventsService from "../../../services/events-service";
 
-import LoadingSpinner from '../../../shared/LoadingSpinner/LoadingSpinner';
-import EventCard from '../../../shared/EventCard/EventCard';
+import LoadingSpinner from "../../../shared/LoadingSpinner/LoadingSpinner";
+import EventCard from "../../../shared/EventCard/EventCard";
 
 export default function UserProfile() {
     const [goingEvents, setGoingEvents] = useState([]);
@@ -28,7 +28,7 @@ export default function UserProfile() {
     return (
         <div className={styles.profileContainer}>
             <h1 className="allEventsHeading">Attending events</h1>
-            <div className="allEventsWrapper">
+            <div className="allEventsWrapper allEventsWrapperMedia">
                 {!isLoaded && <LoadingSpinner />}
                 {isLoaded &&
                     goingEvents.map((event) => (
