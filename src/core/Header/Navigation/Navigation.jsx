@@ -1,16 +1,44 @@
-import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
 
-import styles from './Navigation.module.css';
+import styles from "./Navigation.module.css";
 
-import AuthContext from '../../../contexts/authContext';
+import AuthContext from "../../../contexts/authContext";
 
 export default function Navigation() {
     const { userId } = useContext(AuthContext);
+    const [isHamburgerMenuShown, setHamburgerMenuShown] = useState(false);
+
+    function hamburgerMenuToggle() {
+        isHamburgerMenuShown
+            ? setHamburgerMenuShown(false)
+            : setHamburgerMenuShown(true);
+    }
+
+    function toggleHamburgerMenu() {
+        isHamburgerMenuShown ? setHamburgerMenuShown(false) : "";
+    }
 
     return (
-        <nav>
-            <ul className={styles.navigation}>
+        <>
+            {/* hamburger menu */}
+            <a
+                onClick={hamburgerMenuToggle}
+                className={styles.burgerMenuToggle}
+            >
+                <span className={styles.bar}></span>
+                <span className={styles.bar}></span>
+                <span className={styles.bar}></span>
+            </a>
+
+            <ul
+                className={
+                    isHamburgerMenuShown
+                        ? `${styles.active} ${styles.navigation}`
+                        : styles.navigation
+                }
+                onClick={toggleHamburgerMenu}
+            >
                 <li>
                     <Link to="/">Home</Link>
                 </li>
@@ -41,6 +69,6 @@ export default function Navigation() {
                     </>
                 )}
             </ul>
-        </nav>
+        </>
     );
 }

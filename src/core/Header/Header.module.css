@@ -3,6 +3,7 @@ header {
     align-items: center;
     gap: 1em;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .logoSearchWrapper {
@@ -21,4 +22,22 @@ header {
 .searchButton {
     all: unset;
     cursor: pointer;
+}
+
+@media (max-width: 440px) {
+    header {
+        margin-top: 1em;
+    }
+
+    .logoWrapper img {
+        width: 128px;
+    }
+}
+
+@media (max-width: 350px) {
+    header,
+    .logoSearchWrapper {
+        flex-direction: column;
+        width: 100%;
+    }
 }
