@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-import useEvent from '../useEvent';
-import eventsService from '../../../services/events-service';
-import LoadingSpinner from '../../../shared/LoadingSpinner/LoadingSpinner';
+import useEvent from "../useEvent";
+import eventsService from "../../../services/events-service";
+import LoadingSpinner from "../../../shared/LoadingSpinner/LoadingSpinner";
 
 export default function EditEvent() {
     const [isLoading, setIsLoading] = useState(true);
@@ -19,13 +19,13 @@ export default function EditEvent() {
         setValues,
         setIsFormValid,
     } = useEvent({
-        title: '',
-        description: '',
-        ticketPrice: '',
-        capacity: '',
-        location: '',
-        imageUrl: '',
-        date: '',
+        title: "",
+        description: "",
+        ticketPrice: "",
+        capacity: "",
+        location: "",
+        imageUrl: "",
+        date: "",
     });
 
     const { eventId } = useParams();
@@ -52,7 +52,7 @@ export default function EditEvent() {
     // early return if not loaded event
     if (isLoading) {
         return (
-            <div className="event-container">
+            <div style={{ display: "flex" }}>
                 <LoadingSpinner />
             </div>
         );
@@ -61,12 +61,12 @@ export default function EditEvent() {
     return (
         <div className="add-event-wrapper">
             <h1>Edit an Event</h1>
-            <form onSubmit={(e) => handleSubmit(e, 'edit')}>
+            <form onSubmit={(e) => handleSubmit(e, "edit")}>
                 {/* event title */}
                 <div className="input-wrapper">
                     <i
                         className="fa-solid fa-check"
-                        style={{ color: '#28587B' }}
+                        style={{ color: "#28587B" }}
                     ></i>
                     <input
                         type="text"
@@ -74,8 +74,8 @@ export default function EditEvent() {
                         placeholder="Event title..."
                         className={
                             isInputBlurred.title && !isFormValid.title
-                                ? 'default-input error-input'
-                                : 'default-input'
+                                ? "default-input error-input"
+                                : "default-input"
                         }
                         value={formValues.title}
                         onChange={handleInputChange}
@@ -92,7 +92,7 @@ export default function EditEvent() {
                 <div className="input-wrapper">
                     <i
                         className="fa-solid fa-image"
-                        style={{ color: '#28587B' }}
+                        style={{ color: "#28587B" }}
                     ></i>
                     <input
                         type="text"
@@ -100,8 +100,8 @@ export default function EditEvent() {
                         placeholder="Image Url..."
                         className={
                             isInputBlurred.imageUrl && !isFormValid.imageUrl
-                                ? 'default-input error-input'
-                                : 'default-input'
+                                ? "default-input error-input"
+                                : "default-input"
                         }
                         value={formValues.imageUrl}
                         onChange={handleInputChange}
@@ -116,7 +116,7 @@ export default function EditEvent() {
                 <div className="input-wrapper">
                     <i
                         className="fa-solid fa-location-dot"
-                        style={{ color: '#28587B' }}
+                        style={{ color: "#28587B" }}
                     ></i>
                     <input
                         type="text"
@@ -124,8 +124,8 @@ export default function EditEvent() {
                         placeholder="Address, City"
                         className={
                             isInputBlurred.location && !isFormValid.location
-                                ? 'default-input error-input'
-                                : 'default-input'
+                                ? "default-input error-input"
+                                : "default-input"
                         }
                         value={formValues.location}
                         onChange={handleInputChange}
@@ -143,7 +143,7 @@ export default function EditEvent() {
                 <div className="input-wrapper">
                     <i
                         className="fa-solid fa-calendar"
-                        style={{ color: '#28587B' }}
+                        style={{ color: "#28587B" }}
                     ></i>
                     <input
                         type="date"
@@ -151,10 +151,10 @@ export default function EditEvent() {
                         placeholder="Event date..."
                         className={
                             isInputBlurred.date && !isFormValid.date
-                                ? 'default-input error-input'
-                                : 'default-input'
+                                ? "default-input error-input"
+                                : "default-input"
                         }
-                        style={{ color: formValues.date ? 'black' : '#757575' }}
+                        style={{ color: formValues.date ? "black" : "#757575" }}
                         value={formValues.date}
                         onChange={handleInputChange}
                         onBlur={handleInputBlur}
@@ -170,7 +170,7 @@ export default function EditEvent() {
                 <div className="input-wrapper">
                     <i
                         className="fa-solid fa-ticket"
-                        style={{ color: '#28587B' }}
+                        style={{ color: "#28587B" }}
                     ></i>
                     <input
                         type="number"
@@ -179,8 +179,8 @@ export default function EditEvent() {
                         className={
                             isInputBlurred.ticketPrice &&
                             !isFormValid.ticketPrice
-                                ? 'default-input error-input'
-                                : 'default-input'
+                                ? "default-input error-input"
+                                : "default-input"
                         }
                         value={formValues.ticketPrice}
                         onChange={handleInputChange}
@@ -197,7 +197,7 @@ export default function EditEvent() {
                 <div className="input-wrapper">
                     <i
                         className="fa-solid fa-user-group"
-                        style={{ color: '#28587B' }}
+                        style={{ color: "#28587B" }}
                     ></i>
                     <input
                         type="number"
@@ -205,8 +205,8 @@ export default function EditEvent() {
                         placeholder="Hall capacity..."
                         className={
                             isInputBlurred.capacity && !isFormValid.capacity
-                                ? 'default-input error-input'
-                                : 'default-input'
+                                ? "default-input error-input"
+                                : "default-input"
                         }
                         value={formValues.capacity}
                         onChange={handleInputChange}
@@ -223,7 +223,7 @@ export default function EditEvent() {
                 <div className="input-wrapper">
                     <i
                         className="fa-solid fa-check"
-                        style={{ color: '#28587B' }}
+                        style={{ color: "#28587B" }}
                     ></i>
                     <textarea
                         type="text"
@@ -232,8 +232,8 @@ export default function EditEvent() {
                         className={
                             isInputBlurred.description &&
                             !isFormValid.description
-                                ? 'default-input error-input'
-                                : 'default-input'
+                                ? "default-input error-input"
+                                : "default-input"
                         }
                         value={formValues.description}
                         onChange={handleInputChange}

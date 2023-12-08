@@ -112,6 +112,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     text-decoration: underline;
 }
 
+/* loading spinner center */
+
+.event-container .ldsRing {
+    margin: 0 auto;
+}
+
 /* all events wrapper */
 
 .allEventsHeading {

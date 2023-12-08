@@ -28,8 +28,12 @@ export default function UserProfile() {
     return (
         <div className={styles.profileContainer}>
             <h1 className="allEventsHeading">Attending events</h1>
+            {!isLoaded && (
+                <div style={{ display: "flex" }}>
+                    <LoadingSpinner />{" "}
+                </div>
+            )}
             <div className="allEventsWrapper allEventsWrapperMedia">
-                {!isLoaded && <LoadingSpinner />}
                 {isLoaded &&
                     goingEvents.map((event) => (
                         <EventCard event={event} key={event.id} />

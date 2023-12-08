@@ -25,8 +25,12 @@ export default function AllEvents() {
     return (
         <>
             <h1 className="allEventsHeading">All events</h1>
+            {isLoading && (
+                <div style={isLoading ? { display: "flex" } : ""}>
+                    <LoadingSpinner />
+                </div>
+            )}
             <div className="allEventsWrapper allEventsWrapperMedia">
-                {isLoading && <LoadingSpinner />}
                 {!isLoading && allEvents.length < 1 && (
                     <p>There are no events yet</p>
                 )}
