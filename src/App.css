@@ -19,13 +19,13 @@ main {
 
 .heading-main,
 .event-headings {
-    font-family: 'Exo 2', sans-serif;
+    font-family: "Exo 2", sans-serif;
 }
 
 /* main button */
 .button-main {
     all: unset;
-    background-color: #28587B;
+    background-color: #28587b;
     border-radius: 8px;
     text-decoration: none;
     color: #fff;
@@ -48,13 +48,13 @@ main {
 textarea.default-input {
     resize: vertical;
     min-height: 5em;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     padding-top: 0.6em;
     font-size: 1em;
 }
 
-input[type=date] {
-    font-family: 'Roboto', sans-serif;
+input[type="date"] {
+    font-family: "Roboto", sans-serif;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
@@ -70,9 +70,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: auto;
 }
 
-
 .auth-form h1 {
-    font-family: 'Exo 2', sans-serif;
+    font-family: "Exo 2", sans-serif;
 }
 
 .auth-form,
@@ -131,9 +130,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 /* error validation stylization */
 
 .error-message {
-    color: #ED1C24;
+    color: #ed1c24;
 }
 
 .error-input {
-    border-left: 4px solid #ED1C24;
+    border-left: 4px solid #ed1c24;
 }
