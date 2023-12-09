@@ -43,6 +43,9 @@ DevMeet was designed with the goal of connecting IT enthusiasts with their prefe
 - **User Profile**: Accessible only for logged in users. The user profile page will render the events which they have confirmed to attend.
        
 # App architecture
+![8](https://github.com/AntonovAtanas/DevMeet/assets/114076833/4269d135-d1a2-4e2e-83a4-1a169e375c6b)
+
+![App Routing Module](https://github.com/AntonovAtanas/DevMeet/assets/114076833/15562f7a-ab08-4b1d-b38e-1a36d8ea9bcc)
 
 # App screenshots
 
