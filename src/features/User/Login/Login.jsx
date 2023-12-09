@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import { inputPatterns } from '../../../shared/input-validation-pattern/input-patterns';
-import useAuth from '../useAuth';
+import { inputPatterns } from "../../../shared/input-validation-pattern/input-patterns";
+import useAuth from "../useAuth";
 
 export default function Login() {
     const {
@@ -13,18 +13,19 @@ export default function Login() {
         isInputBlurred,
         errorMessage,
     } = useAuth({
-        email: '',
-        password: '',
+        email: "",
+        password: "",
     });
 
     return (
         <div className="auth-form">
             <h1>Sign In</h1>
-            <form onSubmit={(e) => handleSubmit(e, 'login')}>
+            <form onSubmit={(e) => handleSubmit(e, "login")}>
+                {/* email input */}
                 <div className="input-wrapper">
                     <i
                         className="fa-solid fa-user"
-                        style={{ color: '#28587B' }}
+                        style={{ color: "#28587B" }}
                     ></i>
                     <input
                         type="text"
@@ -32,8 +33,8 @@ export default function Login() {
                         placeholder="Email..."
                         className={
                             !isFormValid.email && isInputBlurred.email
-                                ? 'default-input error-input'
-                                : 'default-input'
+                                ? "default-input error-input"
+                                : "default-input"
                         }
                         // pattern={inputPatterns.email}
                         onChange={handleInputChange}
@@ -41,15 +42,18 @@ export default function Login() {
                         value={formValues.email}
                     />
                 </div>
+                {/* email validation error message */}
                 {!isFormValid.email && isInputBlurred.email && (
                     <span className="error-message">
                         Not valid email address
                     </span>
                 )}
+
+                {/* password input */}
                 <div className="input-wrapper">
                     <i
                         className="fa-solid fa-lock"
-                        style={{ color: '#28587B' }}
+                        style={{ color: "#28587B" }}
                     ></i>
                     <input
                         type="password"
@@ -58,8 +62,8 @@ export default function Login() {
                         autoComplete="on"
                         className={
                             !isFormValid.password && isInputBlurred.password
-                                ? 'default-input error-input'
-                                : 'default-input'
+                                ? "default-input error-input"
+                                : "default-input"
                         }
                         pattern={inputPatterns.password}
                         onChange={handleInputChange}
@@ -67,12 +71,14 @@ export default function Login() {
                         value={formValues.password}
                     />
                 </div>
+                {/* password validation error message */}
                 {!isFormValid.password && isInputBlurred.password && (
                     <span className="error-message">
                         Password must be between 6-12 characters
                     </span>
                 )}
 
+                {/* error message if login details are not correct */}
                 {errorMessage && (
                     <span className="error-message">{errorMessage}</span>
                 )}
