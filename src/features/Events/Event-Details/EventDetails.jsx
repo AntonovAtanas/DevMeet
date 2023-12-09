@@ -137,10 +137,12 @@ export default function EventDetails() {
             </div>
 
             <div className={styles.eventDetails}>
+                {/* event title */}
                 <div>
                     <h1 className="heading-main">{event.title}</h1>
                 </div>
 
+                {/* event date */}
                 <div className={styles.eventDate}>
                     <i
                         className="fa-regular fa-calendar"
@@ -156,6 +158,7 @@ export default function EventDetails() {
                     </div>
                 )}
 
+                {/* ticket price */}
                 <div className={styles.eventTicketPrice}>
                     <i
                         className="fa-solid fa-ticket"
@@ -168,6 +171,7 @@ export default function EventDetails() {
                     </p>
                 </div>
 
+                {/* how many people are going */}
                 <div className={styles.eventGoing}>
                     <i
                         className="fa-solid fa-check"
@@ -176,15 +180,18 @@ export default function EventDetails() {
                     <p>{goingPeople} people going</p>
                 </div>
 
+                {/* event description */}
                 <div className={styles.eventDescription}>
                     <h2 className={styles.eventHeadings}>Description</h2>
                     <p>{event.description}</p>
                 </div>
 
+                {/* event location */}
                 <div className={styles.eventLocation}>
                     <h2 className={styles.eventHeadings}>Location</h2>
                     <p>{event.location}</p>
                     <div>
+                        {/* render Google Maps when it is loaded */}
                         {isLoaded && (
                             <GoogleMap
                                 mapContainerStyle={mapContainerStyle}
