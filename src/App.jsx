@@ -1,24 +1,25 @@
-import { Route, Routes } from 'react-router-dom';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
 
-import { AuthProvider } from './contexts/authContext';
+import "./App.css";
 
-import Header from './core/Header/Header';
-import Home from './features/Home/Home';
-import Footer from './core/Footer/Footer';
-import AllEvents from './features/Events/All-Events/AllEvents';
-import Login from './features/User/Login/Login';
-import Register from './features/User/Register/Register';
-import Logout from './features/User/Logout/Logout';
-import CreateEvent from './features/Events/Create-Event/CreateEvent';
-import EventDetails from './features/Events/Event-Details/EventDetails';
-import EditEvent from './features/Events/Edit-Event/EditEvent';
-import AuthGuard from './shared/guards/AuthGuard';
-import GuestGuard from './shared/guards/GuestGuard';
-import PageNotFound from './shared/error-components/PageNotFound';
-import UserProfile from './features/User/User-Profile/UserProfile';
-import { SearchProvider } from './contexts/searchContext';
-import SearchResults from './features/Events/Search-Results/SearchResults';
+import { AuthProvider } from "./contexts/authContext";
+import { SearchProvider } from "./contexts/searchContext";
+
+import Header from "./core/Header/Header";
+import Home from "./features/Home/Home";
+import Footer from "./core/Footer/Footer";
+import AllEvents from "./features/Events/All-Events/AllEvents";
+import Login from "./features/User/Login/Login";
+import Register from "./features/User/Register/Register";
+import Logout from "./features/User/Logout/Logout";
+import CreateEvent from "./features/Events/Create-Event/CreateEvent";
+import EventDetails from "./features/Events/Event-Details/EventDetails";
+import EditEvent from "./features/Events/Edit-Event/EditEvent";
+import AuthGuard from "./shared/guards/AuthGuard";
+import GuestGuard from "./shared/guards/GuestGuard";
+import PageNotFound from "./shared/error-components/PageNotFound";
+import UserProfile from "./features/User/User-Profile/UserProfile";
+import SearchResults from "./features/Events/Search-Results/SearchResults";
 
 function App() {
     return (
@@ -61,14 +62,11 @@ function App() {
                                     path="/user/logout"
                                     element={<Logout />}
                                 />
-                                {/* add profile page */}
                             </Route>
                             <Route path="*" element={<PageNotFound />} />
                         </Routes>
                     </main>
-                    <footer>
-                        <Footer />
-                    </footer>
+                    <Footer />
                 </SearchProvider>
             </AuthProvider>
         </div>

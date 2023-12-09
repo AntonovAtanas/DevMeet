@@ -1,9 +1,9 @@
-import styles from './Footer.module.css';
+import styles from "./Footer.module.css";
 
 export default function Footer() {
     const year = new Date().getFullYear();
     return (
-        <div className={styles.footerContainer}>
+        <footer className={styles.footerContainer}>
             <div className={styles.separator}></div>
             <p className={styles.footerTitle}>devMeet</p>
             <p className={styles.footerSubTitle}>
@@ -39,6 +39,6 @@ export default function Footer() {
                     </svg>
                 </a>
             </div>
-        </div>
+        </footer>
     );
 }
